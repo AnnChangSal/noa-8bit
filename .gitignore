@@ -1,0 +1,40 @@
+# Node.js dependencies
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build files and output
+dist/
+build/
+
+# Temporary files
+tmp/
+*.tmp
+
+# Cache files
+.cache/
+.npm/
+
+# Phaser-specific (if applicable)
+*.bak
+*.tmp
+
+# Miscellaneous
+*.log
+*.lock
