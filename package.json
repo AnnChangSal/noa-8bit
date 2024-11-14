@@ -1,5 +1,5 @@
 {
-  "name": "pixel-portfolio",
+  "name": "noa-8bit",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -8,8 +8,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "phaser": "^3.86.0"
-  }
+  "description": ""
 }
