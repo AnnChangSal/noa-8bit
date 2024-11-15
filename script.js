@@ -1,21 +1,27 @@
-// Easter Egg: Fun Animation for Email Click
-document.querySelector('a[href="mailto:noa4chang@gmail.com"]').addEventListener('click', (e) => {
-  e.preventDefault(); // Prevent the default email action
-  alert("Thank you for reaching out! I'm excited to connect!");
+// Show Resume PDF on Click
+document.getElementById("resume-card").addEventListener("click", () => {
+  const resumeContainer = document.getElementById("resume-container");
+
+  // Check if the resume is already displayed
+  if (!resumeContainer.innerHTML) {
+    const resumeIframe = document.createElement("iframe");
+    resumeIframe.src = "assets/resume.pdf";
+    resumeIframe.width = "100%";
+    resumeIframe.height = "800px";
+    resumeIframe.style.border = "none";
+
+    resumeContainer.appendChild(resumeIframe);
+    resumeContainer.style.display = "block";
+  } else {
+    // Toggle visibility if already loaded
+    resumeContainer.style.display =
+      resumeContainer.style.display === "none" ? "block" : "none";
+  }
 });
 
-// Expandable Project Details or Confirmation
-document.querySelectorAll(".btn-demo").forEach((button) => {
-  button.addEventListener("click", (event) => {
-    const projectCard = event.target.closest(".project-card");
-    const projectName = projectCard.querySelector("h3").innerText;
-
-    // Confirm before opening the GitHub link
-    if (confirm(`Do you want to view the code for "${projectName}"?`)) {
-      const targetLink = button.getAttribute("onclick").match(/window.open\('(.*)',/)[1];
-      window.open(targetLink, "_blank");
-    }
-  });
+// Confirmation on Resume Download
+document.getElementById("resume-btn").addEventListener("click", () => {
+  alert("Thanks for downloading my resume! You rock!");
 });
 
 // Profile Card Flip Animation
@@ -38,20 +44,16 @@ document.querySelectorAll(".footer-icons img").forEach((icon) => {
   });
 });
 
+// Expandable Project Details or Confirmation
+document.querySelectorAll(".btn-demo").forEach((button) => {
+  button.addEventListener("click", (event) => {
+    const projectCard = event.target.closest(".project-card");
+    const projectName = projectCard.querySelector("h3").innerText;
 
-// Dynamically Load Resume PDF
-document.addEventListener("DOMContentLoaded", () => {
-  const resumeIframe = document.createElement("iframe");
-  resumeIframe.src = "assets/resume.pdf";
-  resumeIframe.width = "100%";
-  resumeIframe.height = "800px";
-  resumeIframe.style.border = "none";
-
-  const resumeSection = document.getElementById("resume");
-  resumeSection.appendChild(resumeIframe);
-});
-
-// Confirmation on Resume Download
-document.getElementById("resume-btn").addEventListener("click", () => {
-  alert("Thanks for downloading my resume! You rock!");
+    // Confirm before opening the GitHub link
+    if (confirm(`Do you want to view the code for "${projectName}"?`)) {
+      const targetLink = button.getAttribute("onclick").match(/window.open\('(.*)',/)[1];
+      window.open(targetLink, "_blank");
+    }
+  });
 });
