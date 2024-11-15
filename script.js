@@ -1,5 +1,5 @@
-// Show Resume PDF on Click
-document.getElementById("resume-card").addEventListener("click", () => {
+// Show/Hide Resume PDF on Button Click
+document.getElementById("show-resume-btn").addEventListener("click", () => {
   const resumeContainer = document.getElementById("resume-container");
 
   // Check if the resume is already displayed
@@ -12,10 +12,16 @@ document.getElementById("resume-card").addEventListener("click", () => {
 
     resumeContainer.appendChild(resumeIframe);
     resumeContainer.style.display = "block";
+    document.getElementById("show-resume-btn").textContent = "Hide Resume";
   } else {
-    // Toggle visibility if already loaded
-    resumeContainer.style.display =
-      resumeContainer.style.display === "none" ? "block" : "none";
+    // Toggle visibility
+    if (resumeContainer.style.display === "none") {
+      resumeContainer.style.display = "block";
+      document.getElementById("show-resume-btn").textContent = "Hide Resume";
+    } else {
+      resumeContainer.style.display = "none";
+      document.getElementById("show-resume-btn").textContent = "Click to View Resume";
+    }
   }
 });
 

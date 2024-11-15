@@ -68,9 +68,6 @@ body {
   }
   
   /* Skills Section */
-  #skills {
-    margin: 20px auto;
-  }
   .skills-grid {
     display: flex;
     justify-content: center;
@@ -104,7 +101,8 @@ body {
     margin-bottom: 20px;
     color: #00ffcc;
   }
-  .btn-view-resume {
+  
+  #show-resume-btn {
     background-color: #00ffcc;
     color: #000;
     padding: 10px 20px;
@@ -112,50 +110,22 @@ body {
     text-decoration: none;
     font-size: 16px;
     font-family: 'Press Start 2P', monospace;
+    border: none;
+    cursor: pointer;
     transition: background-color 0.3s;
   }
-  .btn-view-resume:hover {
+  
+  #show-resume-btn:hover {
     background-color: #007777;
     color: #fff;
-  }
-  /* Resume Section */
-#resume {
-    margin: 50px auto;
-    text-align: center;
-  }
-  
-  #resume h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #00ffcc;
-  }
-  
-  .resume-card {
-    background: #222;
-    padding: 20px;
-    margin: 10px auto;
-    border-radius: 10px;
-    width: 300px;
-    cursor: pointer;
-    transition: transform 0.3s, background-color 0.3s;
-    color: #fff;
-    text-align: center;
-  }
-  
-  .resume-card:hover {
-    transform: scale(1.05);
-    background-color: #333;
   }
   
   #resume-container {
     margin-top: 20px;
-    text-align: center;
+    display: none;
   }
-
+  
   /* Projects Section */
-  #projects {
-    margin: 30px auto;
-  }
   .project-card {
     background: #222;
     padding: 20px;
@@ -187,9 +157,6 @@ body {
   }
   
   /* Footer */
-  footer {
-    margin: 30px 0;
-  }
   .footer-icons img {
     width: 30px;
     margin: 0 10px;
@@ -199,13 +166,5 @@ body {
   .footer-icons img:hover {
     transform: scale(1.2);
     filter: brightness(1.5);
-  }
-  #resume-btn {
-    background-color: #00ffcc;
-    color: #000;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    margin-top: 10px;
   }
   
