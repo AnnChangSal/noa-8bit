@@ -1,22 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>8bitNoa</title>
-  <script src="node_modules/phaser/dist/phaser.min.js"></script>
-  <script type="module" src="src/main.js"></script>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #000;
-    }
-    canvas {
-      display: block;
-      margin: 0 auto;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noa's Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body></body>
+<body>
+  <!-- Header Section -->
+  <header class="pixel-header">
+    <h1 id="name">Noa</h1>
+    <p id="tagline">AI & Full-Stack Developer</p>
+  </header>
+
+  <!-- Profile Section -->
+  <section id="profile">
+    <div id="profile-card" class="card">
+      <div class="front">
+        <img src="assets/profile-pic.png" alt="Profile Picture">
+        <h2>Noa</h2>
+        <p>AI & Full-Stack Developer</p>
+      </div>
+      <div class="back">
+        <p>Hi, I'm Noa! I specialize in building smart solutions with AI, Machine Learning, and Full-Stack development. Let's create something awesome!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill">
+        <img src="assets/brain-icon.png" alt="AI" title="Artificial Intelligence">
+        <p>AI</p>
+        <div class="progress-bar">
+          <div class="progress" style="width: 80%;"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <img src="assets/chart-icon.png" alt="ML" title="Machine Learning">
+        <p>ML</p>
+        <div class="progress-bar">
+          <div class="progress" style="width: 75%;"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <img src="assets/computer-icon.png" alt="Full-Stack" title="Full-Stack Development">
+        <p>Full-Stack</p>
+        <div class="progress-bar">
+          <div class="progress" style="width: 85%;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project-card">
+      <h3>Palmscan</h3>
+      <p>A machine learning-based solution for hand gesture recognition.</p>
+      <button class="btn-demo" onclick="window.open('https://github.com/AnnChangSal/palmscan', '_blank')">View Code</button>
+    </div>
+    <div class="project-card">
+      <h3>Still Unemployment</h3>
+      <p>A job application tracker with interactive features.</p>
+      <button class="btn-demo" onclick="window.open('https://github.com/AnnChangSal/still-unemployment', '_blank')">View Code</button>
+    </div>
+    <div class="project-card">
+      <h3>Give Me Opportunity</h3>
+      <p>A web crawler to find and display job opportunities dynamically.</p>
+      <button class="btn-demo" onclick="window.open('https://github.com/AnnChangSal/give-me-opportunity', '_blank')">View Code</button>
+    </div>
+    <div class="project-card">
+      <h3>Or I Will Listen Muzic</h3>
+      <p>A music recommendation system with Spotify API integration.</p>
+      <button class="btn-demo" onclick="window.open('https://github.com/AnnChangSal/or-i-will-listen-muzic', '_blank')">View Code</button>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-icons">
+      <a href="https://www.linkedin.com/in/noachang/" target="_blank">
+        <img src="assets/linkedin-icon.png" alt="LinkedIn">
+      </a>
+      <a href="https://github.com/AnnChangSal" target="_blank">
+        <img src="assets/github-icon.png" alt="GitHub">
+      </a>
+      <a href="mailto:noa4chang@gmail.com">
+        <img src="assets/email-icon.png" alt="Email">
+      </a>
+    </div>
+    <button id="resume-btn">Download Resume</button>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>
