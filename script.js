@@ -5,12 +5,12 @@ document.getElementById("show-resume-btn").addEventListener("click", () => {
   if (!resumeContainer.innerHTML) {
     // Create image elements for each page
     const page1 = document.createElement("img");
-    page1.src = "assets/resume_page1.png"; // Update with the correct path
+    page1.src = "assets/resume_page1.png"; // Ensure the path is correct
     page1.alt = "Resume Page 1";
     page1.classList.add("resume-page");
 
     const page2 = document.createElement("img");
-    page2.src = "assets/resume_page2.png"; // Update with the correct path
+    page2.src = "assets/resume_page2.png"; // Ensure the path is correct
     page2.alt = "Resume Page 2";
     page2.classList.add("resume-page");
 
