@@ -25,10 +25,6 @@ document.getElementById("show-resume-btn").addEventListener("click", () => {
   }
 });
 
-// Confirmation on Resume Download
-document.getElementById("resume-btn").addEventListener("click", () => {
-  alert("Thanks for downloading my resume! You rock!");
-});
 
 // Profile Card Flip Animation
 const profileCard = document.getElementById("profile-card");
