@@ -187,4 +187,59 @@ footer {
     filter: brightness(1.5);
   }
   
-  
+/* Experience and Awards Section */
+#experience, #awards {
+  margin: 50px auto;
+  text-align: center;
+}
+
+#experience h2, #awards h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #00ffcc;
+}
+
+.experience-card, .award-card {
+  background: #222;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 10px;
+  text-align: left;
+  max-width: 600px;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.experience-card:hover, .award-card:hover {
+  transform: scale(1.05);
+  background-color: #333;
+}
+
+.experience-card img, .award-card img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+  display: inline-block;
+  transition: transform 0.3s;
+}
+
+.experience-card img:hover, .award-card img:hover {
+  transform: scale(1.2);
+}
+
+.experience-card h3, .award-card h3 {
+  font-size: 20px;
+  color: #fff;
+}
+
+.experience-card p, .award-card p {
+  font-size: 16px;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+.experience-card ul, .award-card ul {
+  font-size: 14px;
+  color: #ccc;
+  padding-left: 20px;
+  list-style-type: disc;
+}
