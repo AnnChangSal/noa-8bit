@@ -1,216 +1,88 @@
 /* General Reset */
 body {
-    margin: 0;
-    font-family: 'Press Start 2P', monospace;
-    background-color: #111;
-    color: #fff;
-    text-align: center;
-  }
-  
-  /* Header */
-  .pixel-header {
-    margin: 20px 0;
-  }
-  #name {
-    font-size: 48px;
-    color: #00ffcc;
-    text-shadow: 0px 0px 8px #00ffcc;
-  }
-  #tagline {
-    font-size: 16px;
-    margin: 10px 0;
-  }
-  
-  /* Profile Section */
-  #profile {
-    margin: 30px auto;
-    text-align: center;
-  }
-  .card {
-    width: 300px;
-    height: 400px;
-    perspective: 1000px;
-    margin: 0 auto;
-    cursor: pointer;
-  }
-  .card .front, .card .back {
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid #00ffcc;
-    border-radius: 10px;
-    background-color: #222;
-    color: #fff;
-    transition: transform 0.6s;
-  }
-  .card .front img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-  }
-  .card .back {
-    transform: rotateY(180deg);
-    padding: 10px;
-  }
-  .card.flipped .front {
-    transform: rotateY(180deg);
-  }
-  .card.flipped .back {
-    transform: rotateY(0);
-  }
-  
- /* Skills Section */
-#skills {
-    margin: 50px auto;
-    text-align: center;
-  }
-  
-  #skills h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #00ffcc;
-  }
-  
-  .skills-grid {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  .skills-grid img {
-    width: 80px;
-    height: 80px;
-    transition: transform 0.3s, filter 0.3s;
-    cursor: pointer;
-  }
-  
-  .skills-grid img:hover {
-    transform: scale(1.2);
-    filter: brightness(1.5);
-  }
-  
-  
-/* Resume Section */
-#resume {
-  margin: 50px auto;
-  text-align: center;
-}
-
-#resume h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #00ffcc;
-}
-
-#resume-container {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  border: 1px solid #00ffcc;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-#resume-frame {
-  width: 100%;
-  height: 600px;
-  border: none;
-}
-
-/* Mobile responsiveness */
-@media screen and (max-width: 768px) {
-  #resume-frame {
-    height: 400px;
-  }
-}
-  
-/* Footer */
-footer {
-    margin: 30px 0;
-  }
-  
-  .footer-icons {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-  }
-  
-  .footer-icons img {
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
-    transition: transform 0.3s, filter 0.3s;
-  }
-  
-  .footer-icons img:hover {
-    transform: scale(1.2);
-    filter: brightness(1.5);
-  }
-  
-/* Awards Section */
-#awards {
-  margin: 50px auto;
-  text-align: center;
-}
-
-#awards h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #00ffcc;
-}
-
-.award-card {
-  background: #222;
-  padding: 20px;
-  margin: 20px auto;
-  border-radius: 10px;
-  text-align: left;
-  max-width: 600px;
-  transition: transform 0.3s, background-color 0.3s;
-}
-
-.award-card:hover {
-  transform: scale(1.05);
-  background-color: #333;
-}
-
-.award-card i {
-  font-size: 40px;
-  color: #00ffcc;
-  margin-bottom: 10px;
-  display: inline-block;
-  transition: transform 0.3s;
-}
-
-.award-card i:hover {
-  transform: scale(1.2);
-}
-
-.award-card h3 {
-  font-size: 20px;
+  margin: 0;
+  font-family: 'Press Start 2P', monospace;
+  background-color: #111;
   color: #fff;
+  text-align: center;
 }
 
-.award-card p {
+/* Header */
+.pixel-header {
+  margin: 20px 0;
+}
+#name {
+  font-size: 48px;
+  color: #00ffcc;
+  text-shadow: 0px 0px 8px #00ffcc;
+}
+#tagline {
   font-size: 16px;
-  color: #aaa;
+  margin: 10px 0;
+}
+
+/* Profile Section */
+#profile {
+  margin: 30px auto;
+  text-align: center;
+}
+.card {
+  width: 300px;
+  height: 400px;
+  perspective: 1000px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+.card .front, .card .back {
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #00ffcc;
+  border-radius: 10px;
+  background-color: #222;
+  color: #fff;
+  transition: transform 0.6s;
+}
+.card .front img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
   margin-bottom: 10px;
 }
+.card .back {
+  transform: rotateY(180deg);
+  padding: 10px;
+}
+.card.flipped .front {
+  transform: rotateY(180deg);
+}
+.card.flipped .back {
+  transform: rotateY(0);
+}
 
-.award-card ul {
-  font-size: 14px;
-  color: #ccc;
-  padding-left: 20px;
-  list-style-type: disc;
+/* Skills Section */
+.skills-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.skill img {
+  width: 80px;
+  margin-bottom: 10px;
+  transition: transform 0.3s, filter 0.3s;
+  cursor: pointer;
+}
+.skill img:hover {
+  transform: scale(1.2);
+  filter: brightness(1.5);
 }
 
 /* Work Experience Section */
@@ -270,10 +142,121 @@ footer {
   list-style-type: disc;
 }
 
+/* Awards Section */
+#awards {
+  margin: 50px auto;
+  text-align: center;
+}
+
+#awards h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #00ffcc;
+}
+
+.award-card {
+  background: #222;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 10px;
+  text-align: left;
+  max-width: 600px;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.award-card:hover {
+  transform: scale(1.05);
+  background-color: #333;
+}
+
+.award-card i {
+  font-size: 40px;
+  color: #00ffcc;
+  margin-bottom: 10px;
+  display: inline-block;
+  transition: transform 0.3s;
+}
+
+.award-card i:hover {
+  transform: scale(1.2);
+}
+
+.award-card h3 {
+  font-size: 20px;
+  color: #fff;
+}
+
+.award-card p {
+  font-size: 16px;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+.award-card ul {
+  font-size: 14px;
+  color: #ccc;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+/* Resume Section */
+#resume {
+  margin: 50px auto;
+  text-align: center;
+}
+
+#resume h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #00ffcc;
+}
+
+#resume-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border: 1px solid #00ffcc;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#resume-frame {
+  width: 100%;
+  height: 600px;
+  border: none;
+}
+
+/* Footer */
+footer {
+  margin: 30px 0;
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.footer-icons img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: transform 0.3s, filter 0.3s;
+}
+
+.footer-icons img:hover {
+  transform: scale(1.2);
+  filter: brightness(1.5);
+}
+
 /* Mobile responsiveness */
 @media screen and (max-width: 768px) {
-  .experience-card {
+  .experience-card, .award-card {
     padding: 15px;
     max-width: 90%;
+  }
+
+  #resume-frame {
+    height: 400px;
   }
 }
