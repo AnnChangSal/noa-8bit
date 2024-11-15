@@ -8,7 +8,7 @@ document.getElementById("show-resume-btn").addEventListener("click", () => {
     resumeIframe.src = "assets/resume.pdf";
     resumeIframe.width = "100%";
     resumeIframe.style.border = "none";
-    resumeIframe.style.height = "600px";
+    resumeIframe.style.height = "800px";
 
     resumeContainer.appendChild(resumeIframe);
     resumeContainer.style.display = "block";
@@ -33,28 +33,4 @@ if (profileCard) {
   });
 }
 
-// Social Icons Interaction (Hover Animations)
-document.querySelectorAll(".footer-icons img").forEach((icon) => {
-  icon.addEventListener("mouseover", () => {
-    icon.style.transform = "scale(1.2)";
-    icon.style.filter = "brightness(1.5)";
-  });
-  icon.addEventListener("mouseout", () => {
-    icon.style.transform = "scale(1)";
-    icon.style.filter = "brightness(1)";
-  });
-});
-
-// Expandable Project Details or Confirmation
-document.querySelectorAll(".btn-demo").forEach((button) => {
-  button.addEventListener("click", (event) => {
-    const projectCard = event.target.closest(".project-card");
-    const projectName = projectCard.querySelector("h3").innerText;
-
-    // Confirm before opening the GitHub link
-    if (confirm(`Do you want to view the code for "${projectName}"?`)) {
-      const targetLink = button.getAttribute("onclick").match(/window.open\('(.*)',/)[1];
-      window.open(targetLink, "_blank");
-    }
-  });
-});
+// Removed hover animations from JavaScript since they're handled in CSS
