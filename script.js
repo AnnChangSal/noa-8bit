@@ -1,22 +1,28 @@
-// Show/Hide Resume PDF on Button Click
+// Show/Hide Resume Images on Button Click
 document.getElementById("show-resume-btn").addEventListener("click", () => {
   const resumeContainer = document.getElementById("resume-container");
 
-  // Check if the resume is already displayed
   if (!resumeContainer.innerHTML) {
-    const resumeIframe = document.createElement("iframe");
-    resumeIframe.src = "assets/resume.pdf";
-    resumeIframe.width = "100%";
-    resumeIframe.style.border = "none";
-    resumeIframe.style.height = "800px";
+    // Create image elements for each page
+    const page1 = document.createElement("img");
+    page1.src = "assets/resume_page1.png"; // Update with the correct path
+    page1.alt = "Resume Page 1";
+    page1.classList.add("resume-page");
 
-    resumeContainer.appendChild(resumeIframe);
-    resumeContainer.style.display = "block";
+    const page2 = document.createElement("img");
+    page2.src = "assets/resume_page2.png"; // Update with the correct path
+    page2.alt = "Resume Page 2";
+    page2.classList.add("resume-page");
+
+    resumeContainer.appendChild(page1);
+    resumeContainer.appendChild(page2);
+
+    resumeContainer.style.display = "flex";
     document.getElementById("show-resume-btn").textContent = "Hide Resume";
   } else {
     // Toggle visibility
     if (resumeContainer.style.display === "none") {
-      resumeContainer.style.display = "block";
+      resumeContainer.style.display = "flex";
       document.getElementById("show-resume-btn").textContent = "Hide Resume";
     } else {
       resumeContainer.style.display = "none";
