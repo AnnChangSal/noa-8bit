@@ -7,8 +7,8 @@ document.getElementById("show-resume-btn").addEventListener("click", () => {
     const resumeIframe = document.createElement("iframe");
     resumeIframe.src = "assets/resume.pdf";
     resumeIframe.width = "100%";
-    resumeIframe.height = "800px";
     resumeIframe.style.border = "none";
+    resumeIframe.style.height = "600px";
 
     resumeContainer.appendChild(resumeIframe);
     resumeContainer.style.display = "block";
