@@ -38,7 +38,20 @@ document.querySelectorAll(".footer-icons img").forEach((icon) => {
   });
 });
 
-// Resume Button Easter Egg
+
+// Dynamically Load Resume PDF
+document.addEventListener("DOMContentLoaded", () => {
+  const resumeIframe = document.createElement("iframe");
+  resumeIframe.src = "assets/resume.pdf";
+  resumeIframe.width = "100%";
+  resumeIframe.height = "800px";
+  resumeIframe.style.border = "none";
+
+  const resumeSection = document.getElementById("resume");
+  resumeSection.appendChild(resumeIframe);
+});
+
+// Confirmation on Resume Download
 document.getElementById("resume-btn").addEventListener("click", () => {
   alert("Thanks for downloading my resume! You rock!");
 });

@@ -68,6 +68,9 @@ body {
   }
   
   /* Skills Section */
+  #skills {
+    margin: 20px auto;
+  }
   .skills-grid {
     display: flex;
     justify-content: center;
@@ -91,7 +94,35 @@ body {
     height: 100%;
   }
   
+  /* Resume Section */
+  #resume {
+    margin: 50px auto;
+    text-align: center;
+  }
+  #resume h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #00ffcc;
+  }
+  .btn-view-resume {
+    background-color: #00ffcc;
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Press Start 2P', monospace;
+    transition: background-color 0.3s;
+  }
+  .btn-view-resume:hover {
+    background-color: #007777;
+    color: #fff;
+  }
+  
   /* Projects Section */
+  #projects {
+    margin: 30px auto;
+  }
   .project-card {
     background: #222;
     padding: 20px;
@@ -106,7 +137,7 @@ body {
     transform: scale(1.05);
     background-color: #333;
   }
-  .btn-demo, .btn-code {
+  .btn-demo {
     display: inline-block;
     margin: 5px;
     padding: 10px;
@@ -117,6 +148,10 @@ body {
     cursor: pointer;
     text-transform: uppercase;
   }
+  .btn-demo:hover {
+    background: #007777;
+    color: #fff;
+  }
   
   /* Footer */
   footer {
@@ -126,5 +161,18 @@ body {
     width: 30px;
     margin: 0 10px;
     cursor: pointer;
+    transition: transform 0.2s, filter 0.2s;
+  }
+  .footer-icons img:hover {
+    transform: scale(1.2);
+    filter: brightness(1.5);
+  }
+  #resume-btn {
+    background-color: #00ffcc;
+    color: #000;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
   }
   
