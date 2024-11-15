@@ -25,7 +25,6 @@ document.getElementById("show-resume-btn").addEventListener("click", () => {
   }
 });
 
-
 // Profile Card Flip Animation
 const profileCard = document.getElementById("profile-card");
 if (profileCard) {

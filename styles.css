@@ -27,8 +27,8 @@ body {
     text-align: center;
   }
   .card {
-    width: 250px;
-    height: 350px;
+    width: 300px;
+    height: 400px;
     perspective: 1000px;
     margin: 0 auto;
     cursor: pointer;
@@ -51,8 +51,8 @@ body {
     transition: transform 0.6s;
   }
   .card .front img {
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     margin-bottom: 10px;
   }
@@ -71,17 +71,17 @@ body {
   .skills-grid {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 40px;
     flex-wrap: wrap;
   }
   .skill img {
-    width: 50px;
+    width: 80px;
     margin-bottom: 10px;
   }
   .progress-bar {
     background-color: #333;
-    width: 80%;
-    height: 10px;
+    width: 100%;
+    height: 15px;
     margin: 5px auto;
     border-radius: 5px;
     overflow: hidden;
@@ -108,7 +108,7 @@ body {
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 18px;
     font-family: 'Press Start 2P', monospace;
     border: none;
     cursor: pointer;
@@ -158,8 +158,8 @@ body {
   
   /* Footer */
   .footer-icons img {
-    width: 30px;
-    margin: 0 10px;
+    width: 50px;
+    margin: 0 20px;
     cursor: pointer;
     transition: transform 0.2s, filter 0.2s;
   }
