@@ -23,15 +23,12 @@ body {
 
 /* Profile and Skills Container */
 #profile-skills-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
+  display: block; /* Stack vertically */
   margin: 30px auto;
 }
 
 #profile {
-  margin: 20px;
+  margin: 20px auto;
 }
 
 /* Profile Section */
@@ -80,7 +77,7 @@ body {
 
 /* Skills Section */
 #skills {
-  margin: 20px;
+  margin: 20px auto;
 }
 .skills-grid {
   display: grid;
@@ -111,18 +108,21 @@ body {
 }
 .projects-grid {
   display: flex;
-  overflow-x: auto;
-  padding: 20px;
+  flex-wrap: wrap; /* Allow wrapping of items */
+  justify-content: center; /* Center the items */
   gap: 20px;
+  padding: 20px;
+  overflow: visible; /* Remove horizontal scroll */
 }
 .project-card {
-  min-width: 300px;
-  flex-shrink: 0;
   background: #222;
   border-radius: 10px;
   padding: 15px;
   text-align: left;
   transition: transform 0.3s, background-color 0.3s;
+  max-width: 400px; /* Set maximum width */
+  width: 100%; /* Ensure it takes full width of container */
+  box-sizing: border-box; /* Include padding in width */
 }
 .project-card:hover {
   transform: scale(1.05);
@@ -165,12 +165,12 @@ body {
   text-align: center;
 }
 .github-link a {
-  color: #00ffcc;
+  color: #00ffcc; /* Changed to a lighter, more visible color */
   text-decoration: none;
   font-size: 18px;
 }
 .github-link a:hover {
-  color: #00aaff;
+  color: #00aaff; /* Slightly darker shade on hover */
 }
 .github-link img {
   width: 50px;
@@ -271,18 +271,21 @@ body {
 }
 .awards-grid {
   display: flex;
-  overflow-x: auto;
-  padding: 20px;
+  flex-wrap: wrap; /* Allow wrapping of items */
+  justify-content: center; /* Center the items */
   gap: 20px;
+  padding: 20px;
+  overflow: visible; /* Remove horizontal scroll */
 }
 .award-card {
-  min-width: 300px;
-  flex-shrink: 0;
   background: #222;
   padding: 20px;
   border-radius: 10px;
   text-align: left;
   transition: transform 0.3s, background-color 0.3s;
+  max-width: 400px; /* Set maximum width */
+  width: 100%; /* Ensure it takes full width of container */
+  box-sizing: border-box; /* Include padding in width */
 }
 .award-card:hover {
   transform: scale(1.05);
@@ -315,6 +318,29 @@ body {
 }
 
 /* Resume Section */
+#resume {
+  margin: 50px auto;
+  text-align: center;
+}
+#resume h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #00ffcc;
+}
+#show-resume-btn {
+  padding: 10px 20px;
+  background: #00ffcc;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #000;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+#show-resume-btn:hover {
+  background-color: #007777;
+  color: #fff;
+}
 #resume-container {
   width: 100%;
   max-width: 800px;
@@ -325,13 +351,11 @@ body {
   flex-wrap: wrap;
   gap: 20px;
 }
-
 .resume-page {
   width: 100%;
-  max-width: 380px; /* Adjust if necessary */
+  max-width: 600px; /* Increased max-width for better visibility on larger screens */
   height: auto;
 }
-
 @media screen and (max-width: 768px) {
   .resume-page {
     max-width: 100%;
@@ -356,6 +380,11 @@ footer {
 .footer-icons img:hover {
   transform: scale(1.1);
   filter: brightness(1.2);
+}
+footer p {
+  font-size: 14px;
+  color: #aaa;
+  margin-top: 10px;
 }
 
 /* Responsive Design */
