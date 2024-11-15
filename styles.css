@@ -315,29 +315,6 @@ body {
 }
 
 /* Resume Section */
-#resume {
-  margin: 50px auto;
-  text-align: center;
-}
-#resume h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #00ffcc;
-}
-#show-resume-btn {
-  padding: 10px 20px;
-  background: #00ffcc;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  color: #000;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-}
-#show-resume-btn:hover {
-  background-color: #007777;
-  color: #fff;
-}
 #resume-container {
   width: 100%;
   max-width: 800px;
@@ -348,11 +325,13 @@ body {
   flex-wrap: wrap;
   gap: 20px;
 }
+
 .resume-page {
   width: 100%;
-  max-width: 380px;
+  max-width: 380px; /* Adjust if necessary */
   height: auto;
 }
+
 @media screen and (max-width: 768px) {
   .resume-page {
     max-width: 100%;
