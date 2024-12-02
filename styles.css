@@ -2,8 +2,8 @@
 body {
   margin: 0;
   font-family: 'Press Start 2P', monospace;
-  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-  color: #fff;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); /* Dark gradient */
+  color: #e6f1ff; /* Light cyan text for readability */
   text-align: center;
 }
 
@@ -13,12 +13,67 @@ body {
 }
 #name {
   font-size: 48px;
-  color: #00ffcc;
-  text-shadow: 0px 0px 8px #00ffcc;
+  color: #00ffcc; /* Vibrant aqua for the name */
+  text-shadow: 0px 0px 8px #00ffcc; /* Glow effect */
 }
 #tagline {
   font-size: 16px;
   margin: 10px 0;
+  color: #8ab6ff; /* Softer tone for the tagline */
+}
+
+/* Profile Section */
+#profile {
+  margin: 20px auto;
+}
+
+.card {
+  width: 300px;
+  height: 400px;
+  perspective: 1000px;
+  margin: 0 auto;
+  position: relative;
+  cursor: pointer;
+}
+.card .front,
+.card .back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+  border: 2px solid #00ffcc;
+  border-radius: 10px;
+  background-color: #1b1b2f; /* Deep background for contrast */
+  color: #e6f1ff; /* Consistent text color */
+  transition: transform 0.6s ease-in-out;
+}
+
+.card .front {
+  transform: rotateY(0deg);
+}
+
+.card .back {
+  transform: rotateY(180deg);
+}
+
+.card.flipped .front {
+  transform: rotateY(-180deg);
+}
+
+.card.flipped .back {
+  transform: rotateY(0deg);
+}
+
+.card .front img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow */
 }
 
 /* Chatbot Style for Profile Back */
@@ -28,7 +83,7 @@ body {
   justify-content: space-between;
   height: 100%;
   padding: 15px;
-  background-color: #222;
+  background-color: #1b1b2f; /* Matches the front side */
   border-radius: 10px;
 }
 
@@ -36,9 +91,9 @@ body {
   flex-grow: 1;
   overflow-y: auto;
   padding: 10px;
-  background-color: #333;
+  background-color: #232946; /* Dark but not black */
   border-radius: 10px;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);
 }
 
 .message {
@@ -49,15 +104,15 @@ body {
 }
 
 .message.input {
-  background-color: #444;
-  color: #00ffcc;
+  background-color: #2d2f45; /* Muted dark for input messages */
+  color: #00ffcc; /* Aqua for emphasis */
   text-align: left;
   margin-right: auto;
 }
 
 .message.output {
-  background-color: #555;
-  color: #fff;
+  background-color: #3c3e5c; /* Slightly lighter for output messages */
+  color: #e6f1ff; /* Consistent text color */
   text-align: right;
   margin-left: auto;
 }
@@ -65,92 +120,34 @@ body {
 .chat-input-box {
   display: flex;
   width: 100%;
-  background-color: #444;
+  background-color: #2d2f45; /* Matches input message background */
   border-radius: 5px;
   overflow: hidden;
 }
 
 .chat-input-box input {
-  width: 100%;
+  flex-grow: 1;
   padding: 10px;
   border: none;
-  background-color: #333;
-  color: #fff;
+  background-color: #1e2139; /* Slightly darker for depth */
+  color: #e6f1ff;
   font-size: 14px;
   outline: none;
 }
 
-/* Profile and Skills Container */
-#profile-skills-container {
-  display: block; /* Stack vertically */
-  margin: 30px auto;
-}
-
-#profile {
-  margin: 20px auto;
-}
-
-/* Profile Section */
-.card {
-  width: 300px;
-  height: 400px;
-  perspective: 1000px;
-  margin: 0 auto;
+.chat-input-box button {
+  background-color: #00ffcc;
+  color: #1b1b2f;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
   cursor: pointer;
-  position: relative;
+  transition: background-color 0.3s ease;
 }
-.card .front,
-.card .back {
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid #00ffcc;
-  border-radius: 10px;
-  background-color: #222;
+
+.chat-input-box button:hover {
+  background-color: #007777;
   color: #fff;
-  transition: transform 0.6s;
-}
-.card .front img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  margin-bottom: 10px;
-}
-.card .back {
-  transform: rotateY(180deg);
-  padding: 10px;
-}
-.card.flipped .front {
-  transform: rotateY(180deg);
-}
-.card.flipped .back {
-  transform: rotateY(0);
-}
-
-#github-avatar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-#github-avatar img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-}
-
-#github-avatar img:hover {
-  transform: scale(1.1);
-  filter: brightness(1.2);
 }
 
 /* Skills Section */
@@ -176,7 +173,7 @@ body {
 #projects {
   margin: 50px auto;
   text-align: center;
-  background-color: #1a1a2e;
+  background-color: #1e2139; /* Dark neutral */
   padding: 50px 0;
 }
 #projects h2 {
@@ -193,7 +190,7 @@ body {
   overflow: visible;
 }
 .project-card {
-  background: #222;
+  background: #232946;
   border-radius: 10px;
   padding: 15px;
   text-align: left;
@@ -204,12 +201,7 @@ body {
 }
 .project-card:hover {
   transform: scale(1.05);
-  background-color: #333;
-}
-.project-card img {
-  width: 100%;
-  border-radius: 5px;
-  margin-bottom: 10px;
+  background-color: #333b59;
 }
 .project-card h3 {
   font-size: 20px;
@@ -264,9 +256,11 @@ footer p {
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
-  #profile-skills-container {
-    flex-direction: column;
-    align-items: center;
+  .card {
+    width: 90%;
+  }
+  #skills {
+    margin: 20px;
   }
   .projects-grid {
     flex-direction: column;
