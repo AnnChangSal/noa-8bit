@@ -52,5 +52,40 @@ if (profileCard) {
     console.log("Profile card flipped");
   });
 }
+// Replace with your GitHub username
+const GITHUB_USERNAME = "AnnChangSal";
+
+// Select the container where the avatar will be displayed
+const githubAvatarContainer = document.getElementById("github-avatar");
+
+// Fetch GitHub profile information
+fetch(`https://api.github.com/users/${GITHUB_USERNAME}`)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("GitHub API error: " + response.statusText);
+    }
+    return response.json();
+  })
+  .then((data) => {
+    const avatarUrl = data.avatar_url;
+
+    // Create an image element
+    const avatarImg = document.createElement("img");
+    avatarImg.src = avatarUrl;
+    avatarImg.alt = "GitHub Profile Picture";
+    avatarImg.style.width = "120px";
+    avatarImg.style.height = "120px";
+    avatarImg.style.borderRadius = "50%";
+    avatarImg.style.marginBottom = "10px";
+
+    // Append the image to the avatar container
+    githubAvatarContainer.appendChild(avatarImg);
+  })
+  .catch((error) => {
+    console.error("Error fetching GitHub profile picture:", error);
+    // Fallback in case of an error
+    githubAvatarContainer.textContent = "Error loading profile picture.";
+  });
+
 
 // Removed hover animations from JavaScript since they're handled in CSS

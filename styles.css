@@ -74,6 +74,25 @@ body {
 .card.flipped .back {
   transform: rotateY(0);
 }
+#github-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#github-avatar img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  transition: transform 0.3s, filter 0.3s;
+}
+
+#github-avatar img:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
 
 /* Skills Section */
 #skills {
