@@ -20,6 +20,7 @@ body {
   font-size: 16px;
   margin: 10px 0;
 }
+
 /* Chatbot Style for Profile Back */
 .chatbot-style {
   display: flex;
@@ -63,24 +64,21 @@ body {
 
 .chat-input-box {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
   background-color: #444;
   border-radius: 5px;
-  padding: 5px;
+  overflow: hidden;
 }
 
 .chat-input-box input {
   width: 100%;
   padding: 10px;
   border: none;
-  border-radius: 5px;
   background-color: #333;
   color: #fff;
   font-size: 14px;
   outline: none;
 }
-
 
 /* Profile and Skills Container */
 #profile-skills-container {
@@ -101,7 +99,8 @@ body {
   cursor: pointer;
   position: relative;
 }
-.card .front, .card .back {
+.card .front,
+.card .back {
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
@@ -135,6 +134,7 @@ body {
 .card.flipped .back {
   transform: rotateY(0);
 }
+
 #github-avatar {
   display: flex;
   justify-content: center;
@@ -148,12 +148,10 @@ body {
   border-radius: 50%;
 }
 
-
 #github-avatar img:hover {
   transform: scale(1.1);
   filter: brightness(1.2);
 }
-
 
 /* Skills Section */
 #skills {
@@ -188,11 +186,11 @@ body {
 }
 .projects-grid {
   display: flex;
-  flex-wrap: wrap; /* Allow wrapping of items */
-  justify-content: center; /* Center the items */
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
   padding: 20px;
-  overflow: visible; /* Remove horizontal scroll */
+  overflow: visible;
 }
 .project-card {
   background: #222;
@@ -200,9 +198,9 @@ body {
   padding: 15px;
   text-align: left;
   transition: transform 0.3s, background-color 0.3s;
-  max-width: 400px; /* Set maximum width */
-  width: 100%; /* Ensure it takes full width of container */
-  box-sizing: border-box; /* Include padding in width */
+  max-width: 400px;
+  width: 100%;
+  box-sizing: border-box;
 }
 .project-card:hover {
   transform: scale(1.05);
@@ -239,209 +237,6 @@ body {
   color: #fff;
 }
 
-/* GitHub Link */
-.github-link {
-  margin-top: 20px;
-  text-align: center;
-}
-.github-link a {
-  color: #00ffcc; /* Changed to a lighter, more visible color */
-  text-decoration: none;
-  font-size: 18px;
-}
-.github-link a:hover {
-  color: #00aaff; /* Slightly darker shade on hover */
-}
-.github-link img {
-  width: 50px;
-  vertical-align: middle;
-}
-.github-link span {
-  font-size: 18px;
-  margin-left: 10px;
-  vertical-align: middle;
-}
-
-/* Work Experience Section */
-#experience {
-  margin: 50px auto;
-  text-align: center;
-}
-#experience h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #00ffcc;
-}
-.timeline {
-  position: relative;
-  margin: 20px 0;
-}
-.timeline:before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  width: 4px;
-  background: #00ffcc;
-  top: 0;
-  bottom: 0;
-}
-.timeline-item {
-  position: relative;
-  width: 45%;
-  padding: 20px;
-  box-sizing: border-box;
-}
-.timeline-item:nth-child(odd) {
-  left: 0;
-}
-.timeline-item:nth-child(even) {
-  left: 55%;
-}
-.timeline-item .timeline-icon {
-  position: absolute;
-  top: 20px;
-  right: -40px;
-  background: #00ffcc;
-  color: #fff;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.timeline-item .timeline-content {
-  background: #222;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: left;
-  transition: transform 0.3s, background-color 0.3s;
-}
-.timeline-item .timeline-content:hover {
-  transform: scale(1.05);
-  background-color: #333;
-}
-.timeline-item h3 {
-  font-size: 20px;
-  color: #fff;
-}
-.timeline-item p {
-  font-size: 16px;
-  color: #aaa;
-  margin-bottom: 10px;
-}
-.timeline-item ul {
-  font-size: 14px;
-  color: #ccc;
-  padding-left: 20px;
-  list-style-type: disc;
-}
-
-/* Awards Section */
-#awards {
-  margin: 50px auto;
-  text-align: center;
-  background-color: #16213e;
-  padding: 50px 0;
-}
-#awards h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #00ffcc;
-}
-.awards-grid {
-  display: flex;
-  flex-wrap: wrap; /* Allow wrapping of items */
-  justify-content: center; /* Center the items */
-  gap: 20px;
-  padding: 20px;
-  overflow: visible; /* Remove horizontal scroll */
-}
-.award-card {
-  background: #222;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: left;
-  transition: transform 0.3s, background-color 0.3s;
-  max-width: 400px; /* Set maximum width */
-  width: 100%; /* Ensure it takes full width of container */
-  box-sizing: border-box; /* Include padding in width */
-}
-.award-card:hover {
-  transform: scale(1.05);
-  background-color: #333;
-}
-.award-card i {
-  font-size: 40px;
-  color: #00ffcc;
-  margin-bottom: 10px;
-  display: inline-block;
-  transition: transform 0.3s;
-}
-.award-card i:hover {
-  transform: scale(1.2);
-}
-.award-card h3 {
-  font-size: 20px;
-  color: #fff;
-}
-.award-card p {
-  font-size: 16px;
-  color: #aaa;
-  margin-bottom: 10px;
-}
-.award-card ul {
-  font-size: 14px;
-  color: #ccc;
-  padding-left: 20px;
-  list-style-type: disc;
-}
-
-/* Resume Section */
-#resume {
-  margin: 50px auto;
-  text-align: center;
-}
-#resume h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #00ffcc;
-}
-#show-resume-btn {
-  padding: 10px 20px;
-  background: #00ffcc;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  color: #000;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-}
-#show-resume-btn:hover {
-  background-color: #007777;
-  color: #fff;
-}
-#resume-container {
-  width: 100%;
-  max-width: 800px;
-  margin: 20px auto 0;
-  display: none; /* Hidden by default */
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-.resume-page {
-  width: 100%;
-  max-width: 600px; /* Increased max-width for better visibility on larger screens */
-  height: auto;
-}
-@media screen and (max-width: 768px) {
-  .resume-page {
-    max-width: 100%;
-  }
-}
-
 /* Footer */
 footer {
   margin: 30px 0;
@@ -473,24 +268,11 @@ footer p {
     flex-direction: column;
     align-items: center;
   }
-  .timeline-item {
-    width: 100%;
-    left: 0 !important;
-    margin-bottom: 20px;
-  }
-  .timeline:before {
-    left: 20px;
-  }
-  .timeline-item .timeline-icon {
-    left: -40px;
-    right: auto;
-  }
-  .projects-grid, .awards-grid {
+  .projects-grid {
     flex-direction: column;
     align-items: center;
   }
-  .project-card, .award-card {
-    min-width: unset;
+  .project-card {
     width: 90%;
   }
 }
