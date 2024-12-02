@@ -85,8 +85,8 @@ body {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  transition: transform 0.3s, filter 0.3s;
 }
+
 
 #github-avatar img:hover {
   transform: scale(1.1);
