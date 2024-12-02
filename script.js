@@ -53,19 +53,4 @@ if (profileCard) {
   });
 }
 
-// Presentation Navigation
-let currentSlide = 1; // Start on the first slide
-const maxSlides = 5; // Update based on the number of slides in your presentation
-const iframe = document.getElementById('gamma-presentation');
-
-function navigateSlide(direction) {
-  if (direction === 'prev') {
-    currentSlide = Math.max(1, currentSlide - 1); // Ensure slide index doesn't go below 1
-  } else if (direction === 'next') {
-    currentSlide = Math.min(maxSlides, currentSlide + 1); // Ensure slide index doesn't exceed maxSlides
-  }
-  iframe.src = `https://gamma.app/embed/zyses8itfl4m7r6?slide=${currentSlide}`;
-}
-
-
 // Removed hover animations from JavaScript since they're handled in CSS
