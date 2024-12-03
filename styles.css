@@ -4,6 +4,8 @@ body {
   font-family: 'Press Start 2P', monospace;
   background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); /* Gradient background */
   color: #e6f1ff; /* Light cyan for readability */
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #fff;
   text-align: center;
 }
 
@@ -15,65 +17,12 @@ body {
   font-size: 48px;
   color: #00ffcc;
   text-shadow: 0px 0px 8px #00ffcc; /* Glowing effect */
+  color: #00ffcc;
+  text-shadow: 0px 0px 8px #00ffcc;
 }
 #tagline {
   font-size: 16px;
   margin: 10px 0;
-  color: #8ab6ff; /* Subtle blue for the tagline */
-}
-
-/* Profile Section */
-#profile {
-  margin: 20px auto;
-}
-
-.card {
-  width: 300px;
-  height: 400px;
-  perspective: 1000px; /* Enables 3D rotation */
-  margin: 0 auto;
-  position: relative;
-  cursor: pointer;
-}
-.card .front,
-.card .back {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform-style: preserve-3d;
-  border: 2px solid #00ffcc;
-  border-radius: 10px;
-  background-color: #1b1b2f; /* Dark neutral background */
-  color: #e6f1ff; /* Consistent text color */
-  transition: transform 0.6s ease-in-out;
-}
-
-.card .front {
-  transform: rotateY(0deg); /* Default view for the front */
-}
-
-.card .back {
-  transform: rotateY(180deg); /* Hidden back view */
-}
-
-.card.flipped .front {
-  transform: rotateY(-180deg); /* Flip the front side */
-}
-
-.card.flipped .back {
-  transform: rotateY(0deg); /* Reveal the back side */
-}
-
-.card .front img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  margin-bottom: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for profile picture */
 }
 
 /* Chatbot Style for Profile Back */
@@ -83,7 +32,7 @@ body {
   justify-content: space-between;
   height: 100%;
   padding: 15px;
-  background-color: #1b1b2f; /* Matches the front side */
+  background-color: #222;
   border-radius: 10px;
 }
 
@@ -91,9 +40,9 @@ body {
   flex-grow: 1;
   overflow-y: auto;
   padding: 10px;
-  background-color: #232946; /* Slightly lighter dark for contrast */
+  background-color: #333;
   border-radius: 10px;
-  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5); /* Inner shadow for depth */
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .message {
@@ -104,15 +53,15 @@ body {
 }
 
 .message.input {
-  background-color: #2d2f45; /* Muted dark for input messages */
-  color: #00ffcc; /* Aqua for user messages */
+  background-color: #444;
+  color: #00ffcc;
   text-align: left;
   margin-right: auto;
 }
 
 .message.output {
-  background-color: #3c3e5c; /* Slightly lighter for bot messages */
-  color: #e6f1ff; /* Consistent text color */
+  background-color: #555;
+  color: #fff;
   text-align: right;
   margin-left: auto;
 }
@@ -120,34 +69,92 @@ body {
 .chat-input-box {
   display: flex;
   width: 100%;
-  background-color: #2d2f45;
+  background-color: #444;
   border-radius: 5px;
   overflow: hidden;
 }
 
 .chat-input-box input {
-  flex-grow: 1;
+  width: 100%;
   padding: 10px;
   border: none;
-  background-color: #1e2139;
-  color: #e6f1ff;
+  background-color: #333;
+  color: #fff;
   font-size: 14px;
   outline: none;
 }
 
-.chat-input-box button {
-  background-color: #00ffcc;
-  color: #1b1b2f;
-  border: none;
-  padding: 10px 20px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+/* Profile and Skills Container */
+#profile-skills-container {
+  display: block; /* Stack vertically */
+  margin: 30px auto;
 }
 
-.chat-input-box button:hover {
-  background-color: #007777;
+#profile {
+  margin: 20px auto;
+}
+
+/* Profile Section */
+.card {
+  width: 300px;
+  height: 400px;
+  perspective: 1000px;
+  margin: 0 auto;
+  cursor: pointer;
+  position: relative;
+}
+.card .front,
+.card .back {
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #00ffcc;
+  border-radius: 10px;
+  background-color: #222;
   color: #fff;
+  transition: transform 0.6s;
+}
+.card .front img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+.card .back {
+  transform: rotateY(180deg);
+  padding: 10px;
+}
+.card.flipped .front {
+  transform: rotateY(180deg);
+}
+.card.flipped .back {
+  transform: rotateY(0);
+}
+
+#github-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#github-avatar img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+#github-avatar img:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
 }
 
 /* Skills Section */
@@ -173,7 +180,7 @@ body {
 #projects {
   margin: 50px auto;
   text-align: center;
-  background-color: #1e2139;
+  background-color: #1a1a2e;
   padding: 50px 0;
 }
 #projects h2 {
@@ -190,7 +197,7 @@ body {
   overflow: visible;
 }
 .project-card {
-  background: #232946;
+  background: #222;
   border-radius: 10px;
   padding: 15px;
   text-align: left;
@@ -201,7 +208,12 @@ body {
 }
 .project-card:hover {
   transform: scale(1.05);
-  background-color: #333b59;
+  background-color: #333;
+}
+.project-card img {
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 .project-card h3 {
   font-size: 20px;
@@ -256,11 +268,9 @@ footer p {
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
-  .card {
-    width: 90%;
-  }
-  #skills {
-    margin: 20px;
+  #profile-skills-container {
+    flex-direction: column;
+    align-items: center;
   }
   .projects-grid {
     flex-direction: column;
