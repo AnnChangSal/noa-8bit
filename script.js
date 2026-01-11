@@ -101,6 +101,3 @@ function navigateSlide(direction) {
   }
   iframe.src = `https://gamma.app/embed/zyses8itfl4m7r6?slide=${currentSlide}`;
 }
-
-
-// Removed hover animations from JavaScript since they're handled in CSS
