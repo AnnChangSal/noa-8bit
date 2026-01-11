@@ -1,591 +1,102 @@
-/* General Reset */
-body {
-  margin: 0;
-  font-family: 'Press Start 2P', monospace;
-  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-  color: #fff;
-  text-align: center;
+
+const showResumeBtn = document.getElementById("show-resume-btn");
+const resumeContainer = document.getElementById("resume-container");
+
+if (showResumeBtn && resumeContainer) {
+  showResumeBtn.addEventListener("click", () => {
+    console.log("Button clicked");
+
+    if (!resumeContainer.innerHTML) {
+      console.log("Adding resume images");
+      const page1 = document.createElement("img");
+      page1.src = "assets/resume_page1.png";
+      page1.alt = "Resume Page 1";
+      page1.classList.add("resume-page");
+
+      const page2 = document.createElement("img");
+      page2.src = "assets/resume_page2.png";
+      page2.alt = "Resume Page 2";
+      page2.classList.add("resume-page");
+
+      page1.onerror = () => console.error("Failed to load resume_page1.png");
+      page2.onerror = () => console.error("Failed to load resume_page2.png");
+
+      resumeContainer.appendChild(page1);
+      resumeContainer.appendChild(page2);
+
+      resumeContainer.style.display = "flex";
+      showResumeBtn.textContent = "Hide Resume";
+      showResumeBtn.setAttribute("aria-expanded", "true");
+    } else {
+      if (resumeContainer.style.display === "none") {
+        resumeContainer.style.display = "flex";
+        showResumeBtn.textContent = "Hide Resume";
+        showResumeBtn.setAttribute("aria-expanded", "true");
+      } else {
+        resumeContainer.style.display = "none";
+        showResumeBtn.textContent = "Click to View Resume";
+        showResumeBtn.setAttribute("aria-expanded", "false");
+      }
+    }
+  });
 }
 
-/* Header */
-.pixel-header {
-  margin: 20px 0;
-}
-#name {
-  font-size: 48px;
-  color: #00ffcc;
-  text-shadow: 0px 0px 8px #00ffcc;
-}
-#tagline {
-  font-size: 16px;
-  margin: 10px 0;
+const profileCard = document.getElementById("profile-card");
+if (profileCard) {
+  profileCard.addEventListener("click", (e) => {
+    // Prevent flip if clicking on input or button inside the card
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
+    
+    profileCard.classList.toggle("flipped");
+    console.log("Profile card flipped");
+  });
 }
 
-/* Profile and Skills Container */
-#profile-skills-container {
-  display: block; /* Stack vertically */
-  margin: 30px auto;
+const GITHUB_USERNAME = "AnnChangSal";
+const githubAvatarContainer = document.getElementById("github-avatar");
+
+if (githubAvatarContainer) {
+  fetch(`https://api.github.com/users/${GITHUB_USERNAME}`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("GitHub API error: " + response.statusText);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      const avatarUrl = data.avatar_url;
+      const avatarImg = document.createElement("img");
+      avatarImg.src = avatarUrl;
+      avatarImg.alt = "GitHub Profile Picture";
+      
+      // Styling handled here to ensure consistency
+      avatarImg.style.width = "120px";
+      avatarImg.style.height = "120px";
+      avatarImg.style.borderRadius = "50%";
+      avatarImg.style.marginBottom = "10px";
+      avatarImg.style.border = "2px solid #00ffcc";
+
+      githubAvatarContainer.innerHTML = ""; // Clear placeholder
+      githubAvatarContainer.appendChild(avatarImg);
+    })
+    .catch((error) => {
+      console.error("Error fetching GitHub profile picture:", error);
+      githubAvatarContainer.textContent = "Profile Img Error";
+    });
 }
 
-#profile {
-  margin: 20px auto;
-}
+const iframe = document.getElementById('gamma-presentation');
+let currentSlide = 1;
+const maxSlides = 5;
 
-/* Profile Section */
-.card {
-  width: 300px;
-  height: 400px;
-  perspective: 1000px;
-  margin: 0 auto;
-  cursor: pointer;
-  position: relative;
-}
-
-.card .front, .card .back {
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid #00ffcc;
-  border-radius: 10px;
-  background-color: #222;
-  color: #fff;
-  transition: transform 0.6s;
-}
-
-.card .front img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  margin-bottom: 10px;
-}
-
-.card .back {
-  transform: rotateY(180deg);
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #1b1b2f; /* Updated background color */
-  border-radius: 10px;
-}
-
-.card.flipped .front {
-  transform: rotateY(180deg);
-}
-
-.card.flipped .back {
-  transform: rotateY(0);
-}
-
-/* Chatbot Style for Profile Back */
-.card .back .chatbot-style {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  width: 100%;
-}
-
-.card .back .chatbox {
-  flex-grow: 1;
-  overflow-y: auto;
-  padding: 10px;
-  background-color: #232946; /* Slightly lighter dark for contrast */
-  border-radius: 10px;
-  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5); /* Inner shadow for depth */
-}
-
-.card .back .message {
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 10px;
-  font-size: 14px;
-}
-
-.card .back .message.input {
-  background-color: #2d2f45; /* Muted dark for input messages */
-  color: #00ffcc; /* Aqua for user messages */
-  text-align: left;
-  margin-right: auto;
-}
-
-.card .back .message.output {
-  background-color: #3c3e5c; /* Slightly lighter for bot messages */
-  color: #e6f1ff; /* Consistent text color */
-  text-align: right;
-  margin-left: auto;
-}
-
-.card .back .chat-input-box {
-  display: flex;
-  width: 100%;
-  background-color: #2d2f45;
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.card .back .chat-input-box input {
-  flex-grow: 1;
-  padding: 10px;
-  border: none;
-  background-color: #1e2139;
-  color: #e6f1ff;
-  font-size: 14px;
-  outline: none;
-}
-
-.card .back .chat-input-box button {
-  background-color: #00ffcc;
-  color: #1b1b2f;
-  border: none;
-  padding: 10px 20px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.card .back .chat-input-box button:hover {
-  background-color: #007777;
-  color: #fff;
-}
-
-#github-avatar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-#github-avatar img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  transition: transform 0.3s, filter 0.3s;
-}
-
-#github-avatar img:hover {
-  transform: scale(1.1);
-  filter: brightness(1.2);
-}
-
-
-
-/* Skills Section */
-#skills {
-  margin: 20px auto;
-}
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-  gap: 20px;
-  justify-items: center;
-}
-.skills-grid img {
-  width: 80px;
-  transition: transform 0.2s ease, filter 0.2s ease;
-}
-.skills-grid img:hover {
-  transform: scale(1.1);
-  filter: brightness(1.2);
-}
-
-/* Projects Section */
-#projects {
-  margin: 50px auto;
-  text-align: center;
-  background-color: #1a1a2e;
-  padding: 50px 0;
-}
-#projects h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #00aaff;
-}
-.projects-grid {
-  display: flex;
-  flex-wrap: wrap; /* Allow wrapping of items */
-  justify-content: center; /* Center the items */
-  gap: 20px;
-  padding: 20px;
-  overflow: visible; /* Remove horizontal scroll */
-}
-.project-card {
-  background: #222;
-  border-radius: 10px;
-  padding: 15px;
-  text-align: left;
-  transition: transform 0.3s, background-color 0.3s;
-  max-width: 400px; /* Set maximum width */
-  width: 100%; /* Ensure it takes full width of container */
-  box-sizing: border-box; /* Include padding in width */
-}
-.project-card:hover {
-  transform: scale(1.05);
-  background-color: #333;
-}
-.project-card img {
-  width: 100%;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-.project-card h3 {
-  font-size: 20px;
-  color: #fff;
-}
-.project-card p {
-  font-size: 16px;
-  color: #aaa;
-  margin-bottom: 10px;
-}
-.project-card .btn-demo {
-  display: inline-block;
-  padding: 10px 15px;
-  background: linear-gradient(90deg, #00ffcc, #00aaff);
-  border: none;
-  border-radius: 5px;
-  color: #000;
-  cursor: pointer;
-  text-transform: uppercase;
-  font-size: 14px;
-  transition: background-color 0.3s;
-}
-.project-card .btn-demo:hover {
-  background: #007777;
-  color: #fff;
-}
-
-/* GitHub Link */
-.github-link {
-  margin-top: 20px;
-  text-align: center;
-}
-.github-link a {
-  color: #00ffcc; /* Changed to a lighter, more visible color */
-  text-decoration: none;
-  font-size: 18px;
-}
-.github-link a:hover {
-  color: #00aaff; /* Slightly darker shade on hover */
-}
-.github-link img {
-  width: 50px;
-  vertical-align: middle;
-}
-.github-link span {
-  font-size: 18px;
-  margin-left: 10px;
-  vertical-align: middle;
-}
-
-/* Work Experience Section */
-#experience {
-  margin: 50px auto;
-  text-align: center;
-}
-#experience h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #00ffcc;
-}
-.timeline {
-  position: relative;
-  margin: 20px 0;
-}
-.timeline:before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  width: 4px;
-  background: #00ffcc;
-  top: 0;
-  bottom: 0;
-}
-.timeline-item {
-  position: relative;
-  width: 45%;
-  padding: 20px;
-  box-sizing: border-box;
-}
-.timeline-item:nth-child(odd) {
-  left: 0;
-}
-.timeline-item:nth-child(even) {
-  left: 55%;
-}
-.timeline-item .timeline-icon {
-  position: absolute;
-  top: 20px;
-  right: -40px;
-  background: #00ffcc;
-  color: #fff;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.timeline-item .timeline-content {
-  background: #222;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: left;
-  transition: transform 0.3s, background-color 0.3s;
-}
-.timeline-item .timeline-content:hover {
-  transform: scale(1.05);
-  background-color: #333;
-}
-.timeline-item h3 {
-  font-size: 20px;
-  color: #fff;
-}
-.timeline-item p {
-  font-size: 16px;
-  color: #aaa;
-  margin-bottom: 10px;
-}
-.timeline-item ul {
-  font-size: 14px;
-  color: #ccc;
-  padding-left: 20px;
-  list-style-type: disc;
-}
-
-/* Awards Section */
-#awards {
-  margin: 50px auto;
-  text-align: center;
-  background-color: #16213e;
-  padding: 50px 0;
-}
-#awards h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #00ffcc;
-}
-.awards-grid {
-  display: flex;
-  flex-wrap: wrap; /* Allow wrapping of items */
-  justify-content: center; /* Center the items */
-  gap: 20px;
-  padding: 20px;
-  overflow: visible; /* Remove horizontal scroll */
-}
-.award-card {
-  background: #222;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: left;
-  transition: transform 0.3s, background-color 0.3s;
-  max-width: 400px; /* Set maximum width */
-  width: 100%; /* Ensure it takes full width of container */
-  box-sizing: border-box; /* Include padding in width */
-}
-.award-card:hover {
-  transform: scale(1.05);
-  background-color: #333;
-}
-.award-card i {
-  font-size: 40px;
-  color: #00ffcc;
-  margin-bottom: 10px;
-  display: inline-block;
-  transition: transform 0.3s;
-}
-.award-card i:hover {
-  transform: scale(1.2);
-}
-.award-card h3 {
-  font-size: 20px;
-  color: #fff;
-}
-.award-card p {
-  font-size: 16px;
-  color: #aaa;
-  margin-bottom: 10px;
-}
-.award-card ul {
-  font-size: 14px;
-  color: #ccc;
-  padding-left: 20px;
-  list-style-type: disc;
-}
-
-/* Resume Section */
-#resume {
-  margin: 50px auto;
-  text-align: center;
-}
-#resume h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #00ffcc;
-}
-#show-resume-btn {
-  padding: 10px 20px;
-  background: #00ffcc;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  color: #000;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-}
-#show-resume-btn:hover {
-  background-color: #007777;
-  color: #fff;
-}
-#resume-container {
-  width: 100%;
-  max-width: 800px;
-  margin: 20px auto 0;
-  display: none; /* Hidden by default */
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-.resume-page {
-  width: 100%;
-  max-width: 600px; /* Increased max-width for better visibility on larger screens */
-  height: auto;
-}
-@media screen and (max-width: 768px) {
-  .resume-page {
-    max-width: 100%;
-  }
-}
-
-/* Footer */
-footer {
-  margin: 30px 0;
-}
-.footer-icons {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-}
-.footer-icons img {
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
-  transition: transform 0.2s ease, filter 0.2s ease;
-}
-.footer-icons img:hover {
-  transform: scale(1.1);
-  filter: brightness(1.2);
-}
-footer p {
-  font-size: 14px;
-  color: #aaa;
-  margin-top: 10px;
-}
-
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-  #profile-skills-container {
-    flex-direction: column;
-    align-items: center;
-  }
-  .timeline-item {
-    width: 100%;
-    left: 0 !important;
-    margin-bottom: 20px;
-  }
-  .timeline:before {
-    left: 20px;
-  }
-  .timeline-item .timeline-icon {
-    left: -40px;
-    right: auto;
-  }
-  .projects-grid, .awards-grid {
-    flex-direction: column;
-    align-items: center;
-  }
-  .project-card, .award-card {
-    min-width: unset;
-    width: 90%;
-  }
-}
-
-/* --- New Additions for Polaroid & SK AX --- */
-
-/* Polaroid Section */
-#special-feature {
-  margin: 60px auto;
-  text-align: center;
-  padding: 20px;
-}
-
-.polaroid-container {
-  display: inline-block;
-  background-color: #fff;
-  padding: 15px 15px 50px 15px;
-  box-shadow: 10px 10px 0px #000;
-  transform: rotate(-3deg);
-  transition: transform 0.3s;
-  max-width: 400px;
-  width: 90%;
-}
-
-.polaroid-container:hover {
-  transform: rotate(0deg) scale(1.02);
-  z-index: 10;
-}
-
-.polaroid-container img {
-  width: 100%;
-  border: 2px solid #ddd;
-  display: block;
-  image-rendering: pixelated;
-}
-
-.polaroid-caption {
-  font-family: 'Press Start 2P', monospace;
-  color: #333;
-  margin-top: 20px;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.feature-description {
-  margin-top: 40px;
-  color: #fff;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.feature-description h3 {
-  color: #ffcc00; 
-  font-size: 20px;
-  margin-bottom: 15px;
-}
-
-/* SK AX Highlight Badge */
-.highlight-badge {
-  background-color: #ff0055;
-  color: #fff;
-  font-size: 10px;
-  padding: 3px 6px;
-  border-radius: 4px;
-  vertical-align: middle;
-  margin-left: 8px;
-  animation: blink 2s infinite;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
+// Only define navigation function if iframe exists
+if (iframe) {
+  window.navigateSlide = function(direction) {
+    if (direction === 'prev') {
+      currentSlide = Math.max(1, currentSlide - 1);
+    } else if (direction === 'next') {
+      currentSlide = Math.min(maxSlides, currentSlide + 1);
+    }
+    iframe.src = `https://gamma.app/embed/zyses8itfl4m7r6?slide=${currentSlide}`;
+  };
 }
