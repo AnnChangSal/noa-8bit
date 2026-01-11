@@ -3,264 +3,345 @@
 <head>
   <meta charset="UTF-8">
   <title>Noa's Portfolio</title>
-  <link rel="stylesheet" href="styles.css">
-  <!-- Include Bootstrap Icons CSS -->
+  
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-  <!-- Responsive Meta Tag -->
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Favicon (Optional) -->
-  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+
+  <style>
+    /* General Reset */
+    body {
+      margin: 0;
+      font-family: 'Press Start 2P', monospace; /* 8-bit 폰트 적용 */
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #fff;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    .pixel-header { margin: 40px 0; }
+    #name {
+      font-size: 48px;
+      color: #00ffcc;
+      text-shadow: 4px 4px 0px #000; /* 레트로 그림자 */
+      margin-bottom: 10px;
+    }
+    #tagline { font-size: 14px; color: #ddd; }
+
+    /* Sections */
+    section { margin: 60px auto; padding: 20px; max-width: 1000px; }
+    h2 { color: #00ffcc; font-size: 24px; margin-bottom: 40px; text-transform: uppercase; }
+
+    /* --- 1. Profile Card (Chatbot) --- */
+    .card {
+      width: 300px;
+      height: 450px;
+      perspective: 1000px;
+      margin: 0 auto;
+      cursor: pointer;
+    }
+    .card .front, .card .back {
+      width: 100%; height: 100%;
+      position: absolute; top: 0; left: 0;
+      backface-visibility: hidden; -webkit-backface-visibility: hidden;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      border: 4px solid #00ffcc; /* 두께 조절 */
+      border-radius: 15px;
+      background-color: #222;
+      transition: transform 0.6s;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+    .card .front img {
+      width: 140px; height: 140px;
+      border-radius: 50%; border: 4px solid #fff;
+      margin-bottom: 20px;
+    }
+    /* 뒤집기 효과 */
+    .card .back { transform: rotateY(180deg); background-color: #1b1b2f; padding: 10px; }
+    .card.flipped .front { transform: rotateY(180deg); }
+    .card.flipped .back { transform: rotateY(0); }
+
+    /* Chatbot Style */
+    .chatbox {
+      width: 100%; height: 85%;
+      overflow-y: auto;
+      background: #232946; border-radius: 8px;
+      padding: 10px; box-sizing: border-box;
+      font-size: 10px; text-align: left;
+    }
+    .message { padding: 8px; margin: 5px 0; border-radius: 4px; }
+    .message.input { background: #444; color: #00ffcc; align-self: flex-start; }
+    .message.output { background: #00ffcc; color: #000; align-self: flex-end; text-align: right; }
+    .chat-input-box { width: 100%; height: 15%; display: flex; align-items: center; margin-top: 5px;}
+    .chat-input-box input { width: 100%; padding: 8px; font-family: inherit; }
+
+    /* --- 2. Special Feature (Polaroid) --- */
+    #special-feature { margin: 80px auto; }
+    .polaroid-container {
+      display: inline-block;
+      background-color: #fff;
+      padding: 15px 15px 50px 15px;
+      box-shadow: 12px 12px 0px #000; /* 진한 그림자 */
+      transform: rotate(-3deg);
+      transition: transform 0.3s;
+      max-width: 400px; width: 90%;
+    }
+    .polaroid-container:hover { transform: rotate(0deg) scale(1.05); z-index: 10; }
+    .polaroid-container img {
+      width: 100%; border: 2px solid #ddd;
+      display: block; image-rendering: pixelated;
+    }
+    .polaroid-caption {
+      font-family: 'Press Start 2P', monospace;
+      color: #333; margin-top: 20px; font-size: 12px; line-height: 1.5; font-weight: bold;
+    }
+    .feature-description { margin-top: 30px; font-size: 12px; line-height: 1.8; color: #ccc; }
+
+    /* --- 3. Work Experience (Timeline) --- */
+    .timeline { position: relative; margin: 40px 0; }
+    .timeline::before {
+      content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
+      width: 4px; background: #00ffcc; transform: translateX(-50%);
+    }
+    .timeline-item {
+      width: 45%; padding: 20px; position: relative; box-sizing: border-box;
+    }
+    .timeline-item:nth-child(odd) { left: 0; text-align: right; }
+    .timeline-item:nth-child(even) { left: 55%; text-align: left; }
+    
+    .timeline-icon {
+      position: absolute; top: 20px; width: 40px; height: 40px;
+      background: #00ffcc; border-radius: 50%; color: #000;
+      display: flex; align-items: center; justify-content: center;
+      border: 4px solid #fff; z-index: 2;
+    }
+    .timeline-item:nth-child(odd) .timeline-icon { right: -64px; }
+    .timeline-item:nth-child(even) .timeline-icon { left: -64px; }
+
+    .timeline-content {
+      background: #222; padding: 20px; border-radius: 10px;
+      border: 2px solid #444; transition: 0.3s;
+    }
+    .timeline-content:hover { transform: scale(1.02); border-color: #00ffcc; }
+    .timeline-content h3 { color: #fff; font-size: 16px; margin: 0 0 5px 0; }
+    .timeline-content p { font-size: 12px; color: #aaa; margin: 5px 0; }
+    .timeline-content ul { font-size: 10px; padding-left: 20px; list-style: disc; display: inline-block; text-align: left;}
+
+    /* SK AX Highlight */
+    .highlight-badge {
+      background-color: #ff0055; color: #fff; font-size: 10px;
+      padding: 4px 8px; border-radius: 4px; margin-left: 5px;
+      vertical-align: middle; animation: blink 1.5s infinite;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+
+    /* Skills & Projects Grid */
+    .skills-grid, .projects-grid, .awards-grid {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;
+    }
+    .skills-grid img { width: 60px; transition: 0.2s; }
+    .skills-grid img:hover { transform: scale(1.2); }
+
+    .project-card, .award-card {
+      background: #222; padding: 20px; border-radius: 10px;
+      width: 300px; text-align: left; border: 2px solid #333; transition: 0.3s;
+    }
+    .project-card:hover { border-color: #00aaff; transform: translateY(-5px); }
+    .project-card img { width: 100%; border-radius: 5px; margin-bottom: 10px; }
+    .project-card h3 { font-size: 16px; margin: 10px 0; color: #fff; }
+    .project-card p, .award-card p, .award-card ul { font-size: 12px; color: #bbb; }
+    .btn-demo {
+      background: #00ffcc; color: #000; border: none; padding: 10px;
+      font-family: inherit; cursor: pointer; margin-top: 10px; width: 100%;
+    }
+    .btn-demo:hover { background: #fff; }
+
+    /* Footer */
+    footer { margin-top: 80px; padding: 20px; font-size: 12px; color: #666; }
+    .footer-icons img { width: 40px; margin: 0 10px; transition: 0.2s; }
+    .footer-icons img:hover { transform: scale(1.1); filter: brightness(1.5); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .timeline::before { left: 20px; }
+      .timeline-item { width: 100%; left: 0 !important; text-align: left; padding-left: 50px; }
+      .timeline-item:nth-child(odd) .timeline-icon, 
+      .timeline-item:nth-child(even) .timeline-icon { left: 0; right: auto; }
+      .card { width: 90%; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Header Section -->
   <header class="pixel-header">
     <h1 id="name">Noa</h1>
     <p id="tagline">AI & Full-Stack Developer</p>
   </header>
 
-  <!-- Profile Section -->
   <section id="profile">
     <div id="profile-card" class="card">
       <div class="front">
-        <div id="github-avatar"></div> <!-- Placeholder for GitHub Profile Picture -->
-        <h2>Noa</h2>
+        <div id="github-avatar"></div> <h2>Noa</h2>
         <p>AI & Full-Stack Developer</p>
+        <p style="font-size:10px; color:#aaa; margin-top:10px;">(Click to Flip!)</p>
       </div>
       <div class="back chatbot-style">
         <div class="chatbox">
           <div class="message input">Who are you?</div>
           <div class="message output">I'm Noa, student at University of Waterloo.</div>
           <div class="message input">What do you do?</div>
-          <div class="message output">
-            I'm looking for Summer 2025 co-op/internship in software/AI/Data-related
-            roles.
-          </div>
-          <div class="message input">Tell me about your skills.</div>
-          <div class="message output">
-            I specialize in AI, full-stack development, and data analysis.
-          </div>
+          <div class="message output">Seeking Summer 2026 Co-op in AI/Data/Game Dev.</div>
+          <div class="message input">Skills?</div>
+          <div class="message output">Python, C++, SQL, Unity, Data Engineering.</div>
         </div>
         <div class="chat-input-box">
           <input type="text" placeholder="Type a message..." disabled />
         </div>
       </div>
-      
     </div>
   </section>
 
-  <!-- Special Section -->
   <section id="special-feature">
     <div class="polaroid-container">
       <img src="assets/polaroid-trial.gif" alt="Polaroid Feature Demo">
       <div class="polaroid-caption">
-        My "Detective Game" Project:<br>Polaroid Mode 📸
+        My "Sims" Project:<br>Polaroid Mode 📸
       </div>
     </div>
 
     <div class="feature-description">
-      <p style="color: #ccc; line-height: 1.8; font-size: 14px;">
-        Implemented a <strong>Character Posing & Decoration System</strong>
-        <br><br>
-        <span style="color: #00ffcc;">Tech Stack:</span> C#, Unity, Telemetry Logic
-        <br>
-        Designed logic to track <strong style="color: #fff;">user engagement metrics</strong> (pose selection & sticker usage) to understand player expression.
+      <h3 style="color:#ffcc00; font-size:16px;">To. The Sims Team</h3>
+      <p>
+        Implemented a <strong>Character Posing & Decoration System</strong> inspired by The Sims.<br>
+        <span style="color: #00ffcc;">Tech Stack:</span> C#, Unity, Telemetry Logic<br>
+        Designed logic to track <strong style="color: #fff;">user engagement metrics</strong> (pose selections) to understand player expression.
       </p>
     </div>
   </section>
-  
 
-  <!-- Skills Section -->
-  <section id="skills">
-    <h2>Main Skills</h2>
-    <div class="skills-grid">
-      <!-- Skill Icons with Hover Effect -->
-      <a href="#" target="_blank">
-        <img src="https://skillicons.dev/icons?i=python" alt="Python" class="icon-hover-effect" loading="lazy">
-      </a>
-      <a href="#" target="_blank">
-        <img src="https://skillicons.dev/icons?i=js" alt="JavaScript" class="icon-hover-effect" loading="lazy">
-      </a>
-      <a href="#" target="_blank">
-        <img src="https://skillicons.dev/icons?i=react" alt="React" class="icon-hover-effect" loading="lazy">
-      </a>
-      <a href="#" target="_blank">
-        <img src="https://skillicons.dev/icons?i=typescript" alt="TypeScript" class="icon-hover-effect" loading="lazy">
-      </a>
-      <a href="#" target="_blank">
-        <img src="https://skillicons.dev/icons?i=html,css" alt="HTML & CSS" class="icon-hover-effect" loading="lazy">
-      </a>
-      <a href="#" target="_blank">
-        <img src="https://skillicons.dev/icons?i=git" alt="Git" class="icon-hover-effect" loading="lazy">
-      </a>
-      <a href="#" target="_blank">
-        <img src="https://skillicons.dev/icons?i=docker" alt="Docker" class="icon-hover-effect" loading="lazy">
-      </a>
-      <a href="#" target="_blank">
-        <img src="https://skillicons.dev/icons?i=aws" alt="AWS" class="icon-hover-effect" loading="lazy">
-      </a>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects-grid">
-      <!-- Project Card -->
-      <div class="project-card">
-        <img src="https://github.com/AnnChangSal/still-unemployment/blob/main/assets/still-unemployment-run.png?raw=true" alt="Still Unemployment" loading="lazy">
-        <h3>Still Unemployment</h3>
-        <p>A job application tracker with interactive features.</p>
-        <button class="btn-demo" onclick="window.open('https://github.com/AnnChangSal/still-unemployment', '_blank')">View Code</button>
-      </div>
-      <!-- Project Card -->
-      <div class="project-card">
-        <img src="https://github.com/AnnChangSal/give-me-opportunity/blob/main/assets/gmo-search-result.png?raw=true" alt="Give Me Opportunity" loading="lazy">
-        <h3>Give Me Opportunity</h3>
-        <p>A web crawler to find and display job opportunities dynamically.</p>
-        <button class="btn-demo" onclick="window.open('https://github.com/AnnChangSal/give-me-opportunity', '_blank')">View Code</button>
-      </div>
-      <!-- Project Card -->
-      <div class="project-card">
-        <img src="https://github.com/AnnChangSal/or-i-will-listen-muzic/blob/main/assets/login.png?raw=true" alt="Or I Will Listen Muzic" loading="lazy">
-        <h3>Or I Will Listen Muzic</h3>
-        <p>A music recommendation system with Spotify API integration.</p>
-        <button class="btn-demo" onclick="window.open('https://github.com/AnnChangSal/or-i-will-listen-muzic', '_blank')">View Code</button>
-      </div>
-      <!-- Project Card -->
-      <div class="project-card">
-        <img src="https://github.com/AnnChangSal/palmscan/blob/main/screenshots/home_page.png?raw=true" alt="Palmscan" loading="lazy">
-        <h3>Palmscan</h3>
-        <p>A machine learning-based solution for hand gesture recognition.</p>
-        <button class="btn-demo" onclick="window.open('https://github.com/AnnChangSal/palmscan', '_blank')">View Code</button>
-      </div>
-    </div>
-    <!-- GitHub Link -->
-    <div class="github-link">
-      <a href="https://github.com/AnnChangSal" target="_blank">
-        <img src="https://skillicons.dev/icons?i=github" alt="GitHub">
-        <span>View More on GitHub</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- Work Experience Section -->
   <section id="experience">
     <h2>Work Experience</h2>
     <div class="timeline">
-      <!-- Experience Item -->
+      
       <div class="timeline-item">
-        <div class="timeline-icon">
-          <i class="bi bi-hospital-fill"></i>
+        <div class="timeline-icon" style="background: #ff0055; border-color: #ff0055;">
+          <i class="bi bi-cpu-fill" style="color:white;"></i>
         </div>
-        <div class="timeline-content">
-          <h3>Yespharm</h3>
-          <p><strong>E-Commerce Assistant</strong> | Jan 2022 - Jul 2022</p>
+        <div class="timeline-content" style="border: 2px solid #ff0055;">
+          <h3>SK AX <span class="highlight-badge">LATEST</span></h3>
+          <p style="color: #ffcc00; font-weight:bold;">Enterprise AI Division of SK Group</p>
+          <p><strong>ML Engineer Intern</strong> | May 2025 - Aug 2025</p>
+          <p style="font-style: italic; color: #fff;">*Deployed at SK Hynix Semiconductor Fab</p>
           <ul>
-            <li>Restructured analytics DB into a Star Schema, optimizing query performance and indexing key columns for faster dashboards.</li>
-            <li>Automated reporting workflows with Python, SQL, shifting cadence from weekly to daily while enforcing strict data constraints</li>
+            <li>Engineered <strong>TB-scale Python/SQL pipelines</strong> for manufacturing logs.</li>
+            <li>Optimized inference services for mission-critical decision making.</li>
           </ul>
         </div>
       </div>
-      <!-- Experience Item -->
+
       <div class="timeline-item">
-        <div class="timeline-icon">
-          <i class="bi bi-cpu-fill"></i>
-        </div>
-        <div class="timeline-content">
-          <h3>Guide-U</h3>
-          <p><strong>AI Junior Researcher</strong> | Sep 2023 - Aug 2024</p>
-          <ul>
-            <li>Conducted research on real-time recognition technologies, achieving 90% accuracy in meme recognition.</li>
-            <li>Developed and deployed a Chrome extension integrating YOLOv8 for facial detection.</li>
-          </ul>
-        </div>
-      </div>
-      <!-- Experience Item -->
-      <div class="timeline-item">
-        <div class="timeline-icon">
-          <i class="bi bi-heart-fill"></i>
-        </div>
+        <div class="timeline-icon"><i class="bi bi-heart-fill"></i></div>
         <div class="timeline-content">
           <h3>Ontario Nutri Lab</h3>
           <p><strong>Researcher</strong> | Sep 2024 - Dec 2024</p>
           <ul>
-            <li>Standardized disparate trial logs into a unified SQL database and engineered features (dose, schedule), directly supporting product go and no-go decisions.</li>
-            <li>Built and cross-validated predictive models (scikit-learn) to identify response drivers, optimizing for class imbalance with high F1-scores.</li>
+            <li>Standardized disparate trial logs into unified SQL database.</li>
+            <li>Built predictive models (scikit-learn) with high F1-scores.</li>
           </ul>
         </div>
       </div>
-      <!-- Experience Item -->
+
       <div class="timeline-item">
-        <div class="timeline-icon" style="background: #ff0055;"> <i class="bi bi-cpu-fill"></i>
-        </div>
-        <div class="timeline-content" style="border: 2px solid #ff0055;"> <h3>
-            SK AX 
-            <span class="highlight-badge">LATEST</span>
-          </h3>
-          <p style="color: #ffcc00; font-size: 12px; margin-top: 5px;">Enterprise AI Division of SK Group</p>
-          <p><strong>Machine Learning Engineer Intern</strong> | May 2025 - Aug 2025</p>
-          
-          <p style="font-size: 12px; color: #fff; margin: 10px 0; font-style: italic;">
-            *Deployed at <strong>SK Hynix Semiconductor Fab</strong> (World's 2nd largest memory chipmaker)
-          </p>
-
+        <div class="timeline-icon"><i class="bi bi-camera-video-fill"></i></div>
+        <div class="timeline-content">
+          <h3>Guide-U</h3>
+          <p><strong>AI Junior Researcher</strong> | Sep 2023 - Aug 2024</p>
           <ul>
-            <li>Engineered <strong>TB-scale Python/SQL pipelines</strong> for manufacturing logs.</li>
-            <li>Optimized inference services for mission-critical decision making.</li>
-            <li>Implemented robust data integrity checks for downstream ML models.</li>
+            <li>Real-time recognition research (YOLOv8).</li>
+            <li>Achieved 90% accuracy in object detection.</li>
           </ul>
         </div>
       </div>
+
+      <div class="timeline-item">
+        <div class="timeline-icon"><i class="bi bi-graph-up"></i></div>
+        <div class="timeline-content">
+          <h3>Yes Pharm</h3>
+          <p><strong>Data Analyst</strong> | Jan 2022 - Jul 2022</p>
+          <ul>
+            <li>Optimized dashboard queries by 91% (12s to 1s).</li>
+            <li>Automated weekly reporting to daily cadence.</li>
+          </ul>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- Awards Section -->
+  <section id="skills">
+    <h2>Main Skills</h2>
+    <div class="skills-grid">
+      <img src="https://skillicons.dev/icons?i=python" alt="Python">
+      <img src="https://skillicons.dev/icons?i=js" alt="JavaScript">
+      <img src="https://skillicons.dev/icons?i=react" alt="React">
+      <img src="https://skillicons.dev/icons?i=typescript" alt="TypeScript">
+      <img src="https://skillicons.dev/icons?i=html,css" alt="HTML/CSS">
+      <img src="https://skillicons.dev/icons?i=git" alt="Git">
+      <img src="https://skillicons.dev/icons?i=docker" alt="Docker">
+      <img src="https://skillicons.dev/icons?i=aws" alt="AWS">
+      <img src="https://skillicons.dev/icons?i=cpp" alt="C++">
+      <img src="https://skillicons.dev/icons?i=cs" alt="C#">
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Other Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Still Unemployment</h3>
+        <p>Job application tracker with interactive features.</p>
+        <button class="btn-demo" onclick="window.open('https://github.com/AnnChangSal/still-unemployment')">View Code</button>
+      </div>
+      <div class="project-card">
+        <h3>Give Me Opportunity</h3>
+        <p>Web crawler to find job opportunities dynamically.</p>
+        <button class="btn-demo" onclick="window.open('https://github.com/AnnChangSal/give-me-opportunity')">View Code</button>
+      </div>
+    </div>
+    <div style="margin-top:20px;">
+      <a href="https://github.com/AnnChangSal" style="color:#00ffcc;">View More on GitHub &rarr;</a>
+    </div>
+  </section>
+
   <section id="awards">
-    <h2>Awards & Achievements</h2>
+    <h2>Awards</h2>
     <div class="awards-grid">
-      <!-- Award Card -->
       <div class="award-card">
-        <i class="bi bi-award-fill"></i>
-        <h3>President’s Scholarship of Distinction</h3>
-        <p><strong>Recipient</strong> | Sep 2022</p>
-        <ul>
-          <li>Awarded for exceptional academic performance and achieving a top GPA (over 95%) in the entrance evaluation.</li>
-        </ul>
+        <h3>President’s Scholarship</h3>
+        <p>University of Waterloo | Sep 2022</p>
+        <p>Top GPA (>95%) in entrance evaluation.</p>
       </div>
-      <!-- Award Card -->
       <div class="award-card">
-        <i class="bi bi-bar-chart-fill"></i>
         <h3>DataFest 2024 UW</h3>
-        <p><strong>Recipient</strong> | Apr 2024</p>
-        <ul>
-          <li>Analyzed complex datasets using R, identifying key correlations between student interests and academic performance.</li>
-          <li>Utilized advanced graphing techniques to create insightful visualizations.</li>
-          <li>Cleaned clickstream data (dwell time, quiz scores, paths) and engineered engagement features to explain score lift, presenting findings to judges./li>
-        </ul>
+        <p>Honorable Mention | Apr 2024</p>
+        <p>Analyzed clickstream data with R & SQL.</p>
       </div>
     </div>
   </section>
 
-
-
-  <!-- Footer Section -->
   <footer>
     <div class="footer-icons">
-      <a href="https://www.linkedin.com/in/noachang/" target="_blank">
-        <img src="https://skillicons.dev/icons?i=linkedin" alt="LinkedIn" class="icon-hover-effect" loading="lazy">
-      </a>
-      <a href="https://github.com/AnnChangSal" target="_blank">
-        <img src="https://skillicons.dev/icons?i=github" alt="GitHub" class="icon-hover-effect" loading="lazy">
-      </a>
-      <a href="mailto:noa4chang@gmail.com" target="_blank">
-        <img src="https://skillicons.dev/icons?i=gmail" alt="Email" class="icon-hover-effect" loading="lazy">
-      </a>
+      <a href="https://linkedin.com/in/noachang"><img src="https://skillicons.dev/icons?i=linkedin"></a>
+      <a href="https://github.com/AnnChangSal"><img src="https://skillicons.dev/icons?i=github"></a>
+      <a href="mailto:noa4chang@gmail.com"><img src="https://skillicons.dev/icons?i=gmail"></a>
     </div>
     <p>&copy; 2024 Noa Chang. All rights reserved.</p>
   </footer>
 
-  <!-- Script -->
   <script src="script.js"></script>
 </body>
 </html>
