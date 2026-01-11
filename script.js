@@ -52,6 +52,7 @@ if (profileCard) {
     console.log("Profile card flipped");
   });
 }
+
 // Replace with your GitHub username
 const GITHUB_USERNAME = "AnnChangSal";
 
@@ -86,7 +87,6 @@ fetch(`https://api.github.com/users/${GITHUB_USERNAME}`)
     // Fallback in case of an error
     githubAvatarContainer.textContent = "Error loading profile picture.";
   });
-
 
 // Presentation Navigation
 let currentSlide = 1; // Start on the first slide
