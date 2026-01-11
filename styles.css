@@ -518,3 +518,74 @@ footer p {
     width: 90%;
   }
 }
+
+/* --- New Additions for Polaroid & SK AX --- */
+
+/* Polaroid Section */
+#special-feature {
+  margin: 60px auto;
+  text-align: center;
+  padding: 20px;
+}
+
+.polaroid-container {
+  display: inline-block;
+  background-color: #fff;
+  padding: 15px 15px 50px 15px;
+  box-shadow: 10px 10px 0px #000;
+  transform: rotate(-3deg);
+  transition: transform 0.3s;
+  max-width: 400px;
+  width: 90%;
+}
+
+.polaroid-container:hover {
+  transform: rotate(0deg) scale(1.02);
+  z-index: 10;
+}
+
+.polaroid-container img {
+  width: 100%;
+  border: 2px solid #ddd;
+  display: block;
+  image-rendering: pixelated;
+}
+
+.polaroid-caption {
+  font-family: 'Press Start 2P', monospace;
+  color: #333;
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.feature-description {
+  margin-top: 40px;
+  color: #fff;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.feature-description h3 {
+  color: #ffcc00; 
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+/* SK AX Highlight Badge */
+.highlight-badge {
+  background-color: #ff0055;
+  color: #fff;
+  font-size: 10px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  vertical-align: middle;
+  margin-left: 8px;
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
