@@ -7,7 +7,7 @@
 <style>
   @page { size: Letter; margin: 0.36in 0.48in; }
   * { box-sizing: border-box; }
-  body { margin: 0; font-family: Cambria, "Times New Roman", Georgia, serif; font-size: 9.5pt; line-height: 1.14; color: #000; }
+  body { margin: 0; font-family: Cambria, "Times New Roman", Georgia, serif; font-size: 10pt; line-height: 1.2; color: #000; }
   a { color: #000; text-decoration: underline; }
   h1 { font-size: 23pt; font-weight: 700; text-align: center; margin: 0 0 2pt; letter-spacing: 0.3pt; }
   .contact { text-align: center; font-size: 9.8pt; margin: 0 0 5pt; }
@@ -71,16 +71,6 @@
   </div>
 
   <h2>Projects</h2>
-
-  <div class="entry">
-    <div class="row"><b>Provenance-Preserving Media Archive</b><span>Nov. 2026 – Present</span></div>
-    <div class="row"><i>Python, FastAPI, Pydantic, SQLite, TypeScript, Next.js, React, GitHub Actions</i></div>
-    <ul>
-      <li>Built a multi-source ingestion pipeline consolidating 13K+ evidence items from 6 platforms into 5.3K normalized records, with resumable idempotent imports, per-revision content hashing, and a SHA-256 content-addressed media store.</li>
-      <li>Designed a review ledger that binds each of 1.4K reviewer decisions to its record hash and rejects stale facts, feeding hash-manifested release candidates gated by Pydantic/JSON Schema export contracts.</li>
-      <li>Developing the Next.js front end (cursor-paginated search, calendar/iCal feed, fail-closed publishing); 570+ automated tests across both codebases with GitHub Actions CI.</li>
-    </ul>
-  </div>
 
   <div class="entry">
     <div class="row"><b>GuideU</b><span>Apr. 2023 – Mar. 2024</span></div>
