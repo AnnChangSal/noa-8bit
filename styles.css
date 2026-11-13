@@ -142,8 +142,16 @@ section { padding-block: 56px; }
 /* ---------- projects ---------- */
 .feature { display: grid; grid-template-columns: 1.1fr 1fr; border-color: var(--mint); margin-bottom: 28px; }
 .feature > * { min-width: 0; }
-.feature-shot { background: #f4e9ec; border-right: 3px solid var(--mint); display: flex; align-items: center; }
-.feature-shot img { width: 100%; height: 100%; object-fit: cover; object-position: left top; }
+.feature-shot { background: var(--bg-deep); border-right: 3px solid var(--mint); display: flex; align-items: center; padding: 24px; }
+.pipe { list-style: none; margin: 0; padding: 0; width: 100%; display: grid; gap: 26px; }
+.pipe li { position: relative; background: var(--panel-2); border: 3px solid var(--line); padding: 10px 14px; }
+.pipe li:last-child { border-color: var(--mint); }
+.pipe li + li::before {
+  content: ""; position: absolute; left: 50%; top: -21px; transform: translateX(-50%);
+  border: 7px solid transparent; border-top: 10px solid var(--mint); border-bottom: 0;
+}
+.pipe b { display: block; font-family: var(--px); font-size: 11px; line-height: 1.6; color: var(--gold); font-weight: 400; }
+.pipe span { display: block; font-size: 14px; color: var(--muted); line-height: 1.35; }
 .feature-body { padding: 24px; display: flex; flex-direction: column; gap: 14px; }
 .label { font-family: var(--px); font-size: 9px; color: var(--pink); text-transform: uppercase; }
 .feature-body h3 { font-family: var(--px); font-size: 16px; line-height: 1.5; color: #fff; }

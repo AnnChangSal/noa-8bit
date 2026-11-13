@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Noa Chang - Resume</title>
+<meta name="author" content="Noa Chang">
+<style>
+  @page { size: Letter; margin: 0.36in 0.48in; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Cambria, "Times New Roman", Georgia, serif; font-size: 9.5pt; line-height: 1.14; color: #000; }
+  a { color: #000; text-decoration: underline; }
+  h1 { font-size: 23pt; font-weight: 700; text-align: center; margin: 0 0 2pt; letter-spacing: 0.3pt; }
+  .contact { text-align: center; font-size: 9.8pt; margin: 0 0 5pt; }
+  h2 { font-size: 11.4pt; font-weight: 400; font-variant: small-caps; letter-spacing: 0.4pt; border-bottom: 0.8pt solid #000; margin: 5pt 0 3pt; padding-bottom: 1pt; }
+  .row { display: flex; justify-content: space-between; gap: 12pt; }
+  .row b { font-weight: 700; }
+  .row i { font-style: italic; }
+  .entry { margin-bottom: 3pt; break-inside: avoid; }
+  ul { margin: 1.5pt 0 0; padding-left: 15pt; }
+  li { margin-bottom: 1.2pt; padding-left: 1pt; }
+  .skills p { margin: 0 0 1.5pt; padding-left: 8pt; }
+</style>
+</head>
+<body>
+  <h1>Noa Chang</h1>
+  <p class="contact">
+    <a href="mailto:h62chang@uwaterloo.ca">h62chang@uwaterloo.ca</a> |
+    <a href="https://linkedin.com/in/noa-chang">linkedin.com/in/noa-chang</a> |
+    <a href="https://annchangsal.github.io/noa-8bit/">Portfolio (8-bit Website)</a> |
+    <a href="https://github.com/AnnChangSal">github.com/AnnChangSal</a>
+  </p>
+
+  <h2>Experience</h2>
+
+  <div class="entry">
+    <div class="row"><b>Software Engineer Intern, Backend – Crypto Core / Crypto Trading</b><span>May 2026 – Aug. 2026</span></div>
+    <div class="row"><i>Robinhood</i><i>Toronto, ON</i></div>
+    <ul>
+      <li>Designed and shipped an end-to-end crypto tax-withholding reversal pipeline for a regulatory deadline, spanning bulk ingestion, validation, asynchronous processing, reversal/rebooking, accounting events, and operational tooling.</li>
+      <li>Built idempotent money-movement workflows across sharded services using uniqueness constraints, execution-time validation, row-level locking, and append-only audit events to prevent duplicate reversals under retries and re-uploaded batches.</li>
+      <li>Shipped 3 production workflows for Tax Operations, including bulk reversal APIs, asynchronous processing and status tracking, and withholding-history auditing; incorporated operator feedback through hands-on demos and production validation.</li>
+      <li>Delivered 63 merged changes across 10+ services and components, additionally shipping Crypto IRA eligibility restrictions, statement tooling, and production-safety improvements; reviewed 50+ teammate PRs.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="row"><b>Machine Learning Engineer Intern, AI Team</b><span>May 2025 – Aug. 2025</span></div>
+    <div class="row"><i>SK AX, Enterprise AI Division of SK Group</i><i>Icheon, South Korea</i></div>
+    <ul>
+      <li>Maintained and optimized CI/CD pipelines on strict on-premise infrastructure using Jenkins, ensuring secure processing of TB-scale manufacturing logs; integrated Pylint and unit tests, reducing build failure rates by 20%.</li>
+      <li>Developed Python resource-profiling scripts with psutil to monitor closed-network inference services, identifying memory leaks that reduced latency by 15% and eliminated weekly OOM crashes.</li>
+      <li>Engineered schema validation and null-detection checks within ETL workflows, preventing corrupted data ingestion and improving downstream model-training reliability.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="row"><b>Research Intern</b><span>Sep. 2024 – Dec. 2024</span></div>
+    <div class="row"><i>Ontario Nutri Lab</i><i>Fergus, ON</i></div>
+    <ul>
+      <li>Consolidated 50+ trial logs into a unified SQL database using Python and Pandas, reducing retrieval time from hours to seconds and enabling reproducible analysis across experiments.</li>
+      <li>Cross-validated Random Forest and XGBoost models to identify key response drivers; addressed class imbalance with SMOTE and achieved an F1-score of 0.85.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="row"><b>Data Analyst</b><span>Jan. 2022 – Jul. 2022</span></div>
+    <div class="row"><i>Yes Pharm</i><i>Seoul, South Korea</i></div>
+    <ul>
+      <li>Restructured analytics data into a Star Schema, optimizing query performance by 91%, from 12 seconds to 1 second, and automated daily reporting workflows with Python and SQL.</li>
+    </ul>
+  </div>
+
+  <h2>Projects</h2>
+
+  <div class="entry">
+    <div class="row"><b>Provenance-Preserving Media Archive</b><span>Nov. 2026 – Present</span></div>
+    <div class="row"><i>Python, FastAPI, Pydantic, SQLite, TypeScript, Next.js, React, GitHub Actions</i></div>
+    <ul>
+      <li>Built a multi-source ingestion pipeline consolidating 13K+ evidence items from 6 platforms into 5.3K normalized records, with resumable idempotent imports, per-revision content hashing, and a SHA-256 content-addressed media store.</li>
+      <li>Designed a review ledger that binds each of 1.4K reviewer decisions to its record hash and rejects stale facts, feeding hash-manifested release candidates gated by Pydantic/JSON Schema export contracts.</li>
+      <li>Developing the Next.js front end (cursor-paginated search, calendar/iCal feed, fail-closed publishing); 570+ automated tests across both codebases with GitHub Actions CI.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="row"><b>GuideU</b><span>Apr. 2023 – Mar. 2024</span></div>
+    <div class="row"><i>Python, PyTorch, Whisper, YOLOv8, Pandas</i></div>
+    <ul>
+      <li>Built and instrumented real-time speech-to-text and computer-vision pipelines, analyzing latency and failure modes to evaluate model and system performance.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="row"><b>WakAI</b><span>Jan. 2024 – Dec. 2024</span></div>
+    <div class="row"><i>Python, SQL, Prompt Engineering, PII Redaction</i></div>
+    <ul>
+      <li>Designed prompt and data workflows for 40+ persona chatbots, implementing SQL-backed pipelines and PII redaction for safer user-facing AI interactions.</li>
+    </ul>
+  </div>
+
+  <h2>Technical Skills</h2>
+  <div class="skills">
+    <p><b>Languages:</b> Python, Go, C/C++, JavaScript/TypeScript, C#, SQL/Postgres, R, HTML/CSS</p>
+    <p><b>Backend/Systems:</b> Django, Flask, FastAPI, REST APIs, async processing, distributed systems, testing, CI/CD, data integrity</p>
+    <p><b>Developer Tools:</b> Git, Graphite, Linux, Docker, Kubernetes, Jenkins, GitHub Actions, Bash</p>
+    <p><b>Data/ML:</b> Pandas, NumPy, scikit-learn, PyTorch, XGBoost, YOLOv8, ETL workflows, model evaluation</p>
+  </div>
+
+  <h2>Education</h2>
+  <div class="entry">
+    <div class="row"><b>University of Waterloo</b><span>Waterloo, ON</span></div>
+    <div class="row"><i>Bachelor of Mathematics, Applied Mathematics</i><i>Expected Graduation: Dec. 2027</i></div>
+  </div>
+</body>
+</html>
