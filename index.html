@@ -3,428 +3,286 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Noa Chang | Backend, Data & ML Portfolio</title>
+  <title>Noa Chang | Backend, Data &amp; ML Portfolio</title>
+  <meta name="description" content="Noa Chang — backend software engineer and data/ML builder studying Mathematics at the University of Waterloo. Previously Robinhood and SK AX. Open to Summer 2027 internships and 2028 new grad roles.">
+  <meta name="theme-color" content="#14122b">
+  <link rel="canonical" href="https://annchangsal.github.io/noa-8bit/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Noa Chang | Backend, Data &amp; ML Portfolio">
+  <meta property="og:description" content="Backend software engineer and data/ML builder. Previously Robinhood and SK AX. Open to Summer 2027 internships and 2028 new grad roles.">
+  <meta property="og:url" content="https://annchangsal.github.io/noa-8bit/">
+  <meta property="og:image" content="https://annchangsal.github.io/noa-8bit/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Press Start 2P', monospace;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-      color: #fff;
-      text-align: center;
-      line-height: 1.6;
-    }
-
-    a { color: #00ffcc; text-decoration: none; }
-    a:hover { color: #fff; }
-
-    .pixel-header { margin: 40px auto 25px; padding: 0 20px; }
-    #name {
-      font-size: 48px;
-      color: #00ffcc;
-      text-shadow: 4px 4px 0px #000;
-      margin-bottom: 12px;
-    }
-    #tagline { font-size: 14px; color: #ddd; }
-    .header-links { margin-top: 18px; font-size: 10px; color: #aaa; }
-    .header-links span { margin: 0 8px; }
-
-    section { margin: 58px auto; padding: 20px; max-width: 1050px; }
-    h2 { color: #00ffcc; font-size: 24px; margin-bottom: 36px; text-transform: uppercase; }
-
-    .card {
-      width: 320px;
-      height: 470px;
-      perspective: 1000px;
-      margin: 0 auto;
-      cursor: pointer;
-      position: relative;
-    }
-    .card .front, .card .back {
-      width: 100%; height: 100%;
-      position: absolute; top: 0; left: 0;
-      backface-visibility: hidden; -webkit-backface-visibility: hidden;
-      display: flex; flex-direction: column;
-      justify-content: center; align-items: center;
-      border: 4px solid #00ffcc;
-      border-radius: 15px;
-      background-color: #222;
-      transition: transform 0.6s;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-      box-sizing: border-box;
-      padding: 15px;
-    }
-    .card .back { transform: rotateY(180deg); background-color: #1b1b2f; }
-    .card.flipped .front { transform: rotateY(180deg); }
-    .card.flipped .back { transform: rotateY(0); }
-
-    .chatbox {
-      width: 100%; height: 85%;
-      overflow-y: auto;
-      background: #232946;
-      border-radius: 8px;
-      padding: 10px;
-      box-sizing: border-box;
-      font-size: 10px;
-      text-align: left;
-    }
-    .message { padding: 8px; margin: 6px 0; border-radius: 4px; }
-    .message.input { background: #444; color: #00ffcc; }
-    .message.output { background: #00ffcc; color: #000; text-align: right; }
-    .chat-input-box { width: 100%; height: 15%; display: flex; align-items: center; margin-top: 5px; }
-    .chat-input-box input { width: 100%; padding: 8px; font-family: inherit; }
-
-    #resume-snapshot { margin-top: 45px; }
-    .resume-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-      text-align: left;
-    }
-    .resume-card {
-      background: #222;
-      border: 2px solid #444;
-      border-radius: 10px;
-      padding: 18px;
-      transition: 0.3s;
-    }
-    .resume-card:hover { border-color: #00ffcc; transform: translateY(-4px); }
-    .resume-card h3 { color: #fff; font-size: 13px; margin: 0 0 10px 0; }
-    .resume-card p { color: #bbb; font-size: 10px; margin: 0; }
-
-    #special-feature { margin: 70px auto; }
-    .polaroid-container {
-      display: inline-block;
-      background-color: #fff;
-      padding: 15px 15px 50px 15px;
-      box-shadow: 12px 12px 0px #000;
-      transform: rotate(-3deg);
-      transition: transform 0.3s;
-      max-width: 400px;
-      width: 90%;
-    }
-    .polaroid-container:hover { transform: rotate(0deg) scale(1.05); z-index: 10; }
-    .polaroid-container img { width: 100%; border: 2px solid #ddd; display: block; image-rendering: pixelated; }
-    .polaroid-caption { color: #333; margin-top: 20px; font-size: 12px; line-height: 1.5; font-weight: bold; }
-    .feature-description { margin-top: 30px; font-size: 12px; line-height: 1.8; color: #ccc; }
-
-    .timeline { position: relative; margin: 40px 0; }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 50%; top: 0; bottom: 0;
-      width: 4px;
-      background: #00ffcc;
-      transform: translateX(-50%);
-    }
-    .timeline-item { width: 45%; padding: 20px; position: relative; box-sizing: border-box; }
-    .timeline-item:nth-child(odd) { left: 0; text-align: right; }
-    .timeline-item:nth-child(even) { left: 55%; text-align: left; }
-    .timeline-icon {
-      position: absolute;
-      top: 20px;
-      width: 40px; height: 40px;
-      background: #00ffcc;
-      border-radius: 50%;
-      color: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 4px solid #fff;
-      z-index: 2;
-    }
-    .timeline-item:nth-child(odd) .timeline-icon { right: -64px; }
-    .timeline-item:nth-child(even) .timeline-icon { left: -64px; }
-    .timeline-content {
-      background: #222;
-      padding: 20px;
-      border-radius: 10px;
-      border: 2px solid #444;
-      transition: 0.3s;
-    }
-    .timeline-content:hover { transform: scale(1.02); border-color: #00ffcc; }
-    .timeline-content h3 { color: #fff; font-size: 16px; margin: 0 0 5px 0; }
-    .timeline-content p { font-size: 12px; color: #aaa; margin: 5px 0; }
-    .timeline-content ul { font-size: 10px; padding-left: 20px; list-style: disc; display: inline-block; text-align: left; }
-    .highlight-badge {
-      background-color: #ff0055;
-      color: #fff;
-      font-size: 10px;
-      padding: 4px 8px;
-      border-radius: 4px;
-      margin-left: 5px;
-      vertical-align: middle;
-      animation: blink 1.5s infinite;
-    }
-    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
-
-    .skills-grid, .projects-grid, .awards-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-    .skills-grid img { width: 60px; transition: 0.2s; }
-    .skills-grid img:hover { transform: scale(1.2); }
-    .skill-text {
-      margin-top: 30px;
-      color: #bbb;
-      font-size: 11px;
-      line-height: 1.9;
-    }
-
-    .project-card, .award-card {
-      background: #222;
-      padding: 20px;
-      border-radius: 10px;
-      width: 300px;
-      text-align: left;
-      border: 2px solid #333;
-      transition: 0.3s;
-      box-sizing: border-box;
-    }
-    .project-card:hover, .award-card:hover { border-color: #00aaff; transform: translateY(-5px); }
-    .project-card h3, .award-card h3 { font-size: 16px; margin: 10px 0; color: #fff; }
-    .project-card p, .award-card p, .award-card ul { font-size: 12px; color: #bbb; }
-    .btn-demo {
-      background: #00ffcc;
-      color: #000;
-      border: none;
-      padding: 10px;
-      font-family: inherit;
-      cursor: pointer;
-      margin-top: 10px;
-      width: 100%;
-    }
-    .btn-demo:hover { background: #fff; }
-
-    footer { margin-top: 80px; padding: 20px; font-size: 12px; color: #666; }
-    .footer-icons img { width: 40px; margin: 0 10px; transition: 0.2s; }
-    .footer-icons img:hover { transform: scale(1.1); filter: brightness(1.5); }
-
-    @media (max-width: 768px) {
-      #name { font-size: 36px; }
-      .timeline::before { left: 20px; }
-      .timeline-item { width: 100%; left: 0 !important; text-align: left; padding-left: 55px; }
-      .timeline-item:nth-child(odd) .timeline-icon,
-      .timeline-item:nth-child(even) .timeline-icon { left: 0; right: auto; }
-      .card { width: 90%; }
-      .header-links span { display: block; margin: 6px 0; }
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <header class="pixel-header">
-    <h1 id="name">Noa Chang</h1>
-    <p id="tagline">Backend Software Engineer · Data/ML Builder · University of Waterloo Mathematics</p>
-    <div class="header-links">
-      <span><a href="mailto:h62chang@uwaterloo.ca">h62chang@uwaterloo.ca</a></span>
-      <span><a href="https://linkedin.com/in/noa-chang">LinkedIn</a></span>
-      <span><a href="https://github.com/AnnChangSal">GitHub</a></span>
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="Noa Chang, back to top">NOA.EXE</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <nav id="nav-links" class="nav-links" aria-label="Sections">
+        <a href="#experience">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
   </header>
 
-  <section id="profile">
-    <div id="profile-card" class="card">
-      <div class="front">
-        <div id="github-avatar"></div>
-        <h2>Noa</h2>
-        <p>Backend · Data · ML</p>
-        <p style="font-size:10px; color:#aaa; margin-top:10px;">(Click to Flip!)</p>
-      </div>
-      <div class="back chatbot-style">
-        <div class="chatbox">
-          <div class="message input">Who are you?</div>
-          <div class="message output">I'm Noa, a University of Waterloo Mathematics student.</div>
-          <div class="message input">Current work?</div>
-          <div class="message output">Software Engineer Intern at Robinhood on Crypto Core / Crypto Trading.</div>
-          <div class="message input">What do you build?</div>
-          <div class="message output">Backend services, data pipelines, validation logic, ML workflows, and product-facing tools.</div>
-          <div class="message input">Core stack?</div>
-          <div class="message output">Python, Go, SQL, Django, Git, Graphite, Jira, Slack, PyTorch, Pandas.</div>
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap">
+        <div>
+          <p class="status">Open to Summer 2027 internships &amp; 2028 new grad roles</p>
+          <h1>Noa Chang</h1>
+          <p class="lede">Backend software engineer who also builds data and ML tools.</p>
+          <p class="sub">Mathematics student at the University of Waterloo. Most recently a backend intern at Robinhood on Crypto Core / Crypto Trading.</p>
+          <div class="actions">
+            <a class="btn btn--solid" href="#projects">See projects</a>
+            <a class="btn" href="https://linkedin.com/in/noa-chang" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn" href="https://github.com/AnnChangSal" target="_blank" rel="noopener">GitHub</a>
+          </div>
         </div>
-        <div class="chat-input-box">
-          <input type="text" placeholder="Type a message..." disabled />
+
+        <aside class="dialog box" aria-label="Quick facts about Noa">
+          <div class="dialog-head">
+            <img src="assets/avatar.jpg" alt="Noa's avatar: a small white cat character wearing headphones" width="72" height="72">
+            <div>
+              <strong>NOA</strong>
+              <span>Backend · Data · ML</span>
+            </div>
+          </div>
+          <dl class="chat">
+            <dt>Who are you?</dt>
+            <dd>A University of Waterloo Mathematics student who likes backend work.</dd>
+            <dt>Latest work?</dt>
+            <dd>Software Engineer Intern at Robinhood, May to Aug 2026.</dd>
+            <dt>What do you build?</dt>
+            <dd>Backend services, data pipelines, validation logic and ML workflows.</dd>
+            <dt>What's next?</dt>
+            <dd>A Summer 2027 internship or a 2028 new grad role.</dd>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <section id="focus" aria-labelledby="focus-title">
+      <div class="wrap">
+        <h2 class="section-title" id="focus-title">What I do</h2>
+        <ul class="trio">
+          <li>
+            <h3>Fintech Backend</h3>
+            <p>Regulated crypto trading at Robinhood: tax withholding, eligibility logic, unit tests and backend migrations.</p>
+          </li>
+          <li>
+            <h3>MLOps &amp; Data Engineering</h3>
+            <p>CI/CD, profiling, schema validation and ETL reliability tooling for closed-network enterprise AI and manufacturing logs.</p>
+          </li>
+          <li>
+            <h3>Applied ML</h3>
+            <p>Random Forest, XGBoost, SMOTE, PyTorch, YOLOv8 and Whisper, with model evaluation and KPI dashboards.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="experience" aria-labelledby="experience-title">
+      <div class="wrap">
+        <h2 class="section-title" id="experience-title">Work Experience</h2>
+        <div class="timeline">
+
+          <article class="job box job--latest">
+            <div class="job-head">
+              <h3>Robinhood</h3>
+              <span class="when">May 2026 – Aug 2026</span>
+            </div>
+            <p class="role">Software Engineer Intern, Backend</p>
+            <p class="team">Crypto Core / Crypto Trading</p>
+            <ul>
+              <li>Implemented backend logic for multi-jurisdiction tax withholding workflows across U.S. and U.K. surfaces.</li>
+              <li>Built crypto trading eligibility logic, including state-based restrictions for retirement-account trading.</li>
+              <li>Validated flows with internal simulation tools, iOS Simulator, Figma QA, unit tests and test users.</li>
+              <li>Refactored migration tooling from Python to Go to improve backend developer workflows.</li>
+            </ul>
+            <ul class="chips" aria-label="Technologies"><li>Go</li><li>Python</li><li>Django</li><li>SQL</li></ul>
+          </article>
+
+          <article class="job box">
+            <div class="job-head">
+              <h3>SK AX</h3>
+              <span class="when">May 2025 – Aug 2025</span>
+            </div>
+            <p class="role">Machine Learning Engineer Intern</p>
+            <p class="team">Enterprise AI Division of SK Group</p>
+            <ul>
+              <li>Maintained Jenkins CI/CD pipelines on strict on-premise infrastructure for TB-scale manufacturing logs.</li>
+              <li>Integrated Pylint and unit tests, reducing build failure rates by 20%.</li>
+              <li>Built profiling and ETL integrity checks to reduce latency by 15% and prevent corrupted data ingestion.</li>
+            </ul>
+            <ul class="chips" aria-label="Technologies"><li>Python</li><li>Jenkins</li><li>Docker</li><li>Linux</li></ul>
+          </article>
+
+          <article class="job box">
+            <div class="job-head">
+              <h3>Ontario Nutri Lab</h3>
+              <span class="when">Sep 2024 – Dec 2024</span>
+            </div>
+            <p class="role">Research Intern</p>
+            <ul>
+              <li>Consolidated 50+ trial logs into a unified SQL database using Python and Pandas.</li>
+              <li>Cross-validated Random Forest and XGBoost models, addressing class imbalance with SMOTE and achieving an F1-score of 0.85.</li>
+            </ul>
+            <ul class="chips" aria-label="Technologies"><li>Python</li><li>Pandas</li><li>SQL</li><li>XGBoost</li></ul>
+          </article>
+
+          <article class="job box">
+            <div class="job-head">
+              <h3>Yes Pharm</h3>
+              <span class="when">Jan 2022 – Jul 2022</span>
+            </div>
+            <p class="role">Data Analyst</p>
+            <ul>
+              <li>Restructured analytics data into a Star Schema, improving query performance by 91%.</li>
+              <li>Automated reporting workflows with Python and SQL, shifting reports from weekly to daily.</li>
+            </ul>
+            <ul class="chips" aria-label="Technologies"><li>Python</li><li>SQL</li></ul>
+          </article>
+
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="resume-snapshot">
-    <h2>Resume Snapshot</h2>
-    <div class="resume-grid">
-      <div class="resume-card">
-        <h3>Fintech Backend</h3>
-        <p>Robinhood Crypto Core / Crypto Trading intern working on regulated trading, tax withholding, eligibility logic, unit tests, and backend migrations.</p>
-      </div>
-      <div class="resume-card">
-        <h3>MLOps & Data Engineering</h3>
-        <p>Built CI/CD, profiling, schema validation, and ETL reliability tooling for closed-network enterprise AI and manufacturing-log workflows.</p>
-      </div>
-      <div class="resume-card">
-        <h3>Applied ML</h3>
-        <p>Experience with Random Forest, XGBoost, SMOTE, PyTorch, YOLOv8, Whisper, model evaluation, and KPI dashboards.</p>
-      </div>
-    </div>
-  </section>
+    <section id="projects" aria-labelledby="projects-title">
+      <div class="wrap">
+        <h2 class="section-title" id="projects-title">Projects</h2>
 
-  <section id="special-feature">
-    <div class="polaroid-container">
-      <img src="assets/polaroid-trial.gif" alt="Polaroid Feature Demo">
-      <div class="polaroid-caption">
-        Detective Game Project:<br>Polaroid Mode
-      </div>
-    </div>
-    <div class="feature-description">
-      <p>
-        Implemented a <strong>Character Posing & Decoration System</strong><br>
-        <span style="color: #00ffcc;">Tech Stack:</span> C#, Unity, Event-Driven UI<br>
-        Built interactive drag-and-drop behavior for character posing, photo customization, and object manipulation.
-      </p>
-    </div>
-  </section>
+        <article class="feature box">
+          <div class="feature-shot">
+            <img src="assets/fan-archive-calendar.png" alt="Calendar screen of the fan archive: a month grid with dots marking days that have records, and tabs for Home, Photo, Archive, Calendar, Collections and Playlist" width="572" height="366" loading="lazy">
+          </div>
+          <div class="feature-body">
+            <p class="label">Solo project · 2026 · Live</p>
+            <h3>Fan Archive Platform</h3>
+            <p>A retro personal-homepage style archive of one K-pop artist's official posts. A Python collector gathers posts from six platforms into a versioned release bundle, and a Next.js site serves them as a searchable archive, photo album, calendar and playlist.</p>
+            <div class="stats">
+              <div><b>7,400+</b><span>dated records</span></div>
+              <div><b>5,300+</b><span>media files</span></div>
+              <div><b>6</b><span>source platforms</span></div>
+            </div>
+            <p>Photo album merges duplicate images across platforms. Media is served from Cloudflare R2 and the site runs on Vercel, with read-only public pages and no public write endpoints.</p>
+            <ul class="chips" aria-label="Technologies"><li>Next.js 16</li><li>React 19</li><li>TypeScript</li><li>Python</li><li>Cloudflare R2</li><li>Vercel</li></ul>
+            <p class="note">In tester preview before public launch. Link available on request.</p>
+          </div>
+        </article>
 
-  <section id="experience">
-    <h2>Work Experience</h2>
-    <div class="timeline">
-
-      <div class="timeline-item">
-        <div class="timeline-icon" style="background: #ff0055; border-color: #ff0055;">
-          <i class="bi bi-currency-bitcoin" style="color:white;"></i>
+        <div class="cards">
+          <article class="card card--wide">
+            <video data-demo loop muted playsinline preload="none" poster="assets/polaroid-poster.png" width="400" height="260" aria-label="Screen recording of Polaroid Mode: dragging characters and decorations onto a photo">
+              <source src="assets/polaroid-demo.mp4" type="video/mp4">
+            </video>
+            <div>
+              <h3>Detective Game: Polaroid Mode</h3>
+              <p>Character posing and decoration system with drag-and-drop for posing, photo customization and object manipulation.</p>
+              <ul class="chips" aria-label="Technologies"><li>C#</li><li>Unity</li><li>Event-driven UI</li></ul>
+            </div>
+          </article>
+          <article class="card">
+            <h3>WakAI</h3>
+            <p>Led development logic for 40+ persona chatbots, with prompt workflows and PII redaction for safer user-facing AI interactions.</p>
+            <ul class="chips" aria-label="Technologies"><li>Python</li><li>SQL</li><li>LLM prompts</li></ul>
+          </article>
+          <article class="card">
+            <h3>GuideU</h3>
+            <p>Real-time speech-to-text and computer-vision demos, instrumented with KPI triage dashboards.</p>
+            <ul class="chips" aria-label="Technologies"><li>Whisper</li><li>YOLOv8</li><li>PyTorch</li><li>Pandas</li></ul>
+          </article>
+          <article class="card">
+            <h3>DataFest 2024</h3>
+            <p>Analyzed educational clickstream data to find engagement patterns and present data-driven improvement strategies. Honorable Mention.</p>
+            <ul class="chips" aria-label="Technologies"><li>R</li><li>SQL</li></ul>
+          </article>
+          <article class="card">
+            <h3>Give Me Opportunity</h3>
+            <p>A web crawler that finds job postings and supports internship search workflows.</p>
+            <a class="more" href="https://github.com/AnnChangSal/give-me-opportunity" target="_blank" rel="noopener">View code &rarr;</a>
+          </article>
         </div>
-        <div class="timeline-content" style="border: 2px solid #ff0055;">
-          <h3>Robinhood <span class="highlight-badge">LATEST</span></h3>
-          <p style="color: #ffcc00; font-weight:bold;">Crypto Core / Crypto Trading</p>
-          <p><strong>Software Engineer Intern, Backend</strong> | May 2026 - Aug 2026</p>
-          <ul>
-            <li>Implemented backend logic for multi-jurisdiction tax withholding workflows across U.S. and U.K. surfaces.</li>
-            <li>Built crypto trading eligibility logic, including state-based restrictions for retirement-account trading.</li>
-            <li>Validated flows with internal simulation tools, iOS Simulator, Figma QA, unit tests, and test users.</li>
-            <li>Refactored migration tooling from Python to Go to improve backend developer workflows.</li>
-          </ul>
-        </div>
-      </div>
 
-      <div class="timeline-item">
-        <div class="timeline-icon"><i class="bi bi-cpu-fill"></i></div>
-        <div class="timeline-content">
-          <h3>SK AX</h3>
-          <p style="color: #ffcc00; font-weight:bold;">Enterprise AI Division of SK Group</p>
-          <p><strong>Machine Learning Engineer Intern</strong> | May 2025 - Aug 2025</p>
-          <ul>
-            <li>Maintained Jenkins CI/CD pipelines on strict on-premise infrastructure for TB-scale manufacturing logs.</li>
-            <li>Integrated Pylint and unit tests, reducing build failure rates by 20%.</li>
-            <li>Built profiling and ETL integrity checks to reduce latency by 15% and prevent corrupted data ingestion.</li>
-          </ul>
-        </div>
+        <p class="more-link"><a href="https://github.com/AnnChangSal" target="_blank" rel="noopener">More on GitHub &rarr;</a></p>
       </div>
+    </section>
 
-      <div class="timeline-item">
-        <div class="timeline-icon"><i class="bi bi-heart-fill"></i></div>
-        <div class="timeline-content">
-          <h3>Ontario Nutri Lab</h3>
-          <p><strong>Research Intern</strong> | Sep 2024 - Dec 2024</p>
-          <ul>
-            <li>Consolidated 50+ trial logs into a unified SQL database using Python and Pandas.</li>
-            <li>Cross-validated Random Forest and XGBoost models, addressing class imbalance with SMOTE and achieving an F1-score of 0.85.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-icon"><i class="bi bi-graph-up"></i></div>
-        <div class="timeline-content">
-          <h3>Yes Pharm</h3>
-          <p><strong>Data Analyst</strong> | Jan 2022 - Jul 2022</p>
-          <ul>
-            <li>Restructured analytics data into a Star Schema, improving query performance by 91%.</li>
-            <li>Automated reporting workflows with Python and SQL, shifting reports from weekly to daily.</li>
-          </ul>
+    <section id="skills" aria-labelledby="skills-title">
+      <div class="wrap">
+        <h2 class="section-title" id="skills-title">Skills</h2>
+        <div class="skills">
+          <div>
+            <h3>Languages</h3>
+            <ul class="chips"><li>Python</li><li>Go</li><li>SQL</li><li>TypeScript</li><li>JavaScript</li><li>C++</li><li>C#</li><li>R</li><li>Bash</li></ul>
+          </div>
+          <div>
+            <h3>Backend &amp; Web</h3>
+            <ul class="chips"><li>Django</li><li>Flask</li><li>REST APIs</li><li>Postgres</li><li>Next.js</li><li>React</li><li>Unit testing</li></ul>
+          </div>
+          <div>
+            <h3>Data &amp; ML</h3>
+            <ul class="chips"><li>ETL workflows</li><li>Schema validation</li><li>Pandas</li><li>NumPy</li><li>scikit-learn</li><li>PyTorch</li><li>XGBoost</li><li>YOLOv8</li></ul>
+          </div>
+          <div>
+            <h3>Tools</h3>
+            <ul class="chips"><li>Git</li><li>Graphite</li><li>Docker</li><li>Jenkins</li><li>Linux</li><li>Jira</li><li>Figma</li><li>iOS Simulator</li></ul>
+          </div>
         </div>
       </div>
+    </section>
 
-    </div>
-  </section>
+    <section id="education" aria-labelledby="education-title">
+      <div class="wrap">
+        <h2 class="section-title" id="education-title">Education &amp; Awards</h2>
+        <ul class="edu">
+          <li>
+            <h3>University of Waterloo</h3>
+            <p>Bachelor of Mathematics, Applied Mathematics</p>
+            <p class="when">Expected graduation: Aug 2027</p>
+          </li>
+          <li>
+            <h3>President's Scholarship</h3>
+            <p>Entrance average above 95%.</p>
+            <p class="when">University of Waterloo · Sep 2022</p>
+          </li>
+          <li>
+            <h3>DataFest 2024, Honorable Mention</h3>
+            <p>Clickstream analysis with R and SQL.</p>
+            <p class="when">University of Waterloo · Apr 2024</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
 
-  <section id="skills">
-    <h2>Main Skills</h2>
-    <div class="skills-grid">
-      <img src="https://skillicons.dev/icons?i=python" alt="Python">
-      <img src="https://skillicons.dev/icons?i=go" alt="Go">
-      <img src="https://skillicons.dev/icons?i=django" alt="Django">
-      <img src="https://skillicons.dev/icons?i=postgres" alt="Postgres">
-      <img src="https://skillicons.dev/icons?i=git" alt="Git">
-      <img src="https://skillicons.dev/icons?i=docker" alt="Docker">
-      <img src="https://skillicons.dev/icons?i=jenkins" alt="Jenkins">
-      <img src="https://skillicons.dev/icons?i=figma" alt="Figma">
-      <img src="https://skillicons.dev/icons?i=cpp" alt="C++">
-      <img src="https://skillicons.dev/icons?i=cs" alt="C#">
-      <img src="https://skillicons.dev/icons?i=js" alt="JavaScript">
-      <img src="https://skillicons.dev/icons?i=react" alt="React">
+  <footer class="contact" id="contact">
+    <div class="wrap">
+      <h2 class="section-title">Press Start</h2>
+      <p>I'm looking for a Summer 2027 internship or a 2028 new grad role in backend, data or ML engineering. The fastest way to reach me is email.</p>
+      <div class="actions">
+        <a class="btn btn--solid" href="mailto:h62chang@uwaterloo.ca">Email me</a>
+        <a class="btn" href="https://linkedin.com/in/noa-chang" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/AnnChangSal" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p class="mail">h62chang@uwaterloo.ca</p>
+      <p class="copy">&copy; 2026 Noa Chang</p>
     </div>
-    <div class="skill-text">
-      Python · Go · SQL/Postgres · Django · Flask · REST API logic · ETL workflows · schema validation · unit testing · Git · Graphite · Jira · Slack · Linux · Docker · Jenkins · Bash · VS Code · Figma · iOS Simulator · scikit-learn · PyTorch · XGBoost · YOLOv8 · Pandas · NumPy
-    </div>
-  </section>
-
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects-grid">
-      <div class="project-card">
-        <h3>WakAI</h3>
-        <p>Led development logic for 40+ persona chatbots using Python, SQL, prompt workflows, and PII redaction for safer user-facing AI interactions.</p>
-      </div>
-      <div class="project-card">
-        <h3>GuideU</h3>
-        <p>Instrumented real-time speech-to-text and computer-vision demos with Whisper, YOLOv8, PyTorch, Pandas, and KPI triage dashboards.</p>
-      </div>
-      <div class="project-card">
-        <h3>DataFest 2024</h3>
-        <p>Analyzed educational clickstream data with R and SQL to identify engagement patterns and present data-driven improvement strategies.</p>
-      </div>
-      <div class="project-card">
-        <h3>Give Me Opportunity</h3>
-        <p>Built a web crawler to dynamically find job opportunities and support internship search workflows.</p>
-        <button class="btn-demo" onclick="window.open('https://github.com/AnnChangSal/give-me-opportunity')">View Code</button>
-      </div>
-    </div>
-    <div style="margin-top:20px;">
-      <a href="https://github.com/AnnChangSal">View More on GitHub &rarr;</a>
-    </div>
-  </section>
-
-  <section id="awards">
-    <h2>Awards</h2>
-    <div class="awards-grid">
-      <div class="award-card">
-        <h3>President’s Scholarship</h3>
-        <p>University of Waterloo | Sep 2022</p>
-        <p>Top GPA greater than 95% in entrance evaluation.</p>
-      </div>
-      <div class="award-card">
-        <h3>DataFest 2024 UW</h3>
-        <p>Honorable Mention | Apr 2024</p>
-        <p>Analyzed clickstream data with R and SQL.</p>
-      </div>
-      <div class="award-card">
-        <h3>Education</h3>
-        <p>University of Waterloo</p>
-        <p>Bachelor of Mathematics, Applied Mathematics<br>Expected Graduation: Aug 2027</p>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="footer-icons">
-      <a href="https://linkedin.com/in/noa-chang"><img src="https://skillicons.dev/icons?i=linkedin" alt="LinkedIn"></a>
-      <a href="https://github.com/AnnChangSal"><img src="https://skillicons.dev/icons?i=github" alt="GitHub"></a>
-      <a href="mailto:h62chang@uwaterloo.ca"><img src="https://skillicons.dev/icons?i=gmail" alt="Email"></a>
-    </div>
-    <p>&copy; 2026 Noa Chang. All rights reserved.</p>
   </footer>
 
   <script src="script.js"></script>

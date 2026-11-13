@@ -1,62 +1,48 @@
-const profileCard = document.getElementById("profile-card");
-if (profileCard) {
-  profileCard.addEventListener("click", (e) => {
-    if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
-    
-    profileCard.classList.toggle("flipped");
-    console.log("Profile card flipped");
+// Mobile menu
+const toggle = document.querySelector(".nav-toggle");
+const links = document.getElementById("nav-links");
+
+if (toggle && links) {
+  toggle.addEventListener("click", () => {
+    const open = links.classList.toggle("is-open");
+    toggle.setAttribute("aria-expanded", String(open));
   });
-} else {
-    console.error("Profile Card element not found!");
+  links.addEventListener("click", (e) => {
+    if (e.target.closest("a")) {
+      links.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+  });
 }
 
-const GITHUB_USERNAME = "AnnChangSal";
-const githubAvatarContainer = document.getElementById("github-avatar");
+// Highlight the section being read in the menu
+const navAnchors = [...document.querySelectorAll(".nav-links a")];
+const sections = navAnchors
+  .map((a) => document.getElementById(a.getAttribute("href").slice(1)))
+  .filter(Boolean);
 
-if (githubAvatarContainer) {
-  fetch(`https://api.github.com/users/${GITHUB_USERNAME}`)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("GitHub API error: " + response.statusText);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      const avatarUrl = data.avatar_url;
-
-      const avatarImg = document.createElement("img");
-      avatarImg.src = avatarUrl;
-      avatarImg.alt = "GitHub Profile Picture";
-      
-      avatarImg.style.width = "120px";
-      avatarImg.style.height = "120px";
-      avatarImg.style.borderRadius = "50%";
-      avatarImg.style.marginBottom = "10px";
-      avatarImg.style.border = "2px solid #00ffcc";
-
-      githubAvatarContainer.innerHTML = ""; 
-      githubAvatarContainer.appendChild(avatarImg);
-    })
-    .catch((error) => {
-      console.error("Error fetching GitHub profile picture:", error);
-      githubAvatarContainer.textContent = "Profile Img Error";
-    });
-} else {
-    console.log("GitHub Avatar container not found (Check index.html id='github-avatar')");
+if ("IntersectionObserver" in window && sections.length) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navAnchors.forEach((a) =>
+          a.classList.toggle("is-active", a.getAttribute("href") === "#" + entry.target.id)
+        );
+      });
+    },
+    { rootMargin: "-35% 0px -60% 0px" }
+  );
+  sections.forEach((s) => observer.observe(s));
 }
 
-const iframe = document.getElementById('gamma-presentation');
-
-if (iframe) {
-    let currentSlide = 1;
-    const maxSlides = 5;
-
-    window.navigateSlide = function(direction) {
-        if (direction === 'prev') {
-            currentSlide = Math.max(1, currentSlide - 1);
-        } else if (direction === 'next') {
-            currentSlide = Math.min(maxSlides, currentSlide + 1);
-        }
-        iframe.src = `https://gamma.app/embed/zyses8itfl4m7r6?slide=${currentSlide}`;
-    };
+// Demo video: play on its own unless the visitor asked for less motion
+const demo = document.querySelector("video[data-demo]");
+if (demo) {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    demo.controls = true;
+  } else {
+    demo.muted = true;
+    demo.play().catch(() => { demo.controls = true; });
+  }
 }
